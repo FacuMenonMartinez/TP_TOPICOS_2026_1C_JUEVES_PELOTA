@@ -65,3 +65,69 @@
 
 1777892516 source:e:\unlam\segundo año\topicos de programacion\_proyectos\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\trash.c
 
+1778119647 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\dibujos.c
+	<stdio.h>
+	<stdlib.h>
+	<stdint.h>
+	<stdbool.h>
+	"dibujos.h"
+	"GBT/gbt.h"
+	"piezas.h"
+	"recursos.h"
+
+1778119647 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\dibujos.h
+	"piezas.h"
+
+1778119647 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\piezas.h
+	<stdbool.h>
+	<stdint.h>
+
+1778119647 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\lib\gbt_v2026.1c.01\include\gbt\gbt.h
+	"gbt_entrada.h"
+	"gbt_graficos.h"
+	"gbt_logger.h"
+	"gbt_temporizador.h"
+	"gbt_vector.h"
+
+1778119647 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\lib\gbt_v2026.1c.01\include\gbt\gbt_entrada.h
+	<stdint.h>
+
+1778119647 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\lib\gbt_v2026.1c.01\include\gbt\gbt_graficos.h
+	<stdint.h>
+
+1778119647 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\lib\gbt_v2026.1c.01\include\gbt\gbt_logger.h
+
+1778119647 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\lib\gbt_v2026.1c.01\include\gbt\gbt_temporizador.h
+	<stdint.h>
+
+1778119647 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\lib\gbt_v2026.1c.01\include\gbt\gbt_vector.h
+	<stdlib.h>
+	<stdint.h>
+
+1778119647 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\recursos.h
+	"dibujos.h"
+
+1778126411 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdint.h>
+	<time.h>
+	<stdbool.h>
+	"GBT/gbt.h"
+	"paletas.h"
+	"recursos.h"
+
+1778119647 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\paletas.h
+	"GBT/gbt.h"
+
+1778119647 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\paletas.c
+	"paletas.h"
+
+1778119647 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\piezas.c
+	"piezas.h"
+
+1778119647 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\recursos.c
+	"recursos.h"
+
+1778119647 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\trash.c
+

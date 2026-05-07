@@ -60,18 +60,19 @@ int main(int argc, char* argv[])
     uint8_t corriendo = 1;
     uint8_t contador_Frames = 0;
     uint8_t nivel = 0;
+    ///SETEAR LA PIEZA CON EL RANDOM
     bool pieza_Nueva = 1;
    //Posicion de pieza
     pieza_Pos pieza_Posicion;
+    ///pieza_Pos piezaSig_Posicion;
 
     while(corriendo){
 
         //Dibujar pieza en coordenada de inicio
         if (pieza_Nueva){
             pieza_Posicion.X =      GRILLA_COL/2;
-            pieza_Posicion.Y =      0;
+            pieza_Posicion.Y =      5;
             pieza_Posicion.Rot =    GRADOS_0;
-
             dibujar_Pieza(pieza_L, pieza_Posicion,Sc, Sb);
             pieza_Nueva = 0;
         }
@@ -106,6 +107,7 @@ int main(int argc, char* argv[])
                 pieza_Posicion.Rot = GRADOS_0;
             }
         }
+        ///pieza_Posicion.Rot = (pieza_Posicion.Rot + 1) & 3;
 
         //Salir de la ejecucion
         if (tecla == GBTK_ESCAPE){
@@ -158,6 +160,12 @@ int main(int argc, char* argv[])
                 contador_Frames = 0;
                 pieza_Posicion.Y++;
         }
+        ///------------------------------
+        if(pieza_Posicion.Y > 25)
+        {
+            pieza_Posicion.Y --;
+            pieza_Nueva = 1;
+        }
 
         //Detectar colision
         //Agregar colision a la condicion para que deje de sumar y la dibuje en el lugar que quedo
@@ -165,6 +173,7 @@ int main(int argc, char* argv[])
 
         //Dibujar la pieza en la pos que le corresponda
         dibujar_Pieza(pieza_J, pieza_Posicion,Sc, Sb);
+
 
         //Volcar pixeles dibujados en el backbuffer a la ventana
         gbt_volcar_backbuffer();
