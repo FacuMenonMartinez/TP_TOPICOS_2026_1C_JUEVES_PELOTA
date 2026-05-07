@@ -1,7 +1,7 @@
-bin/
-lib/
-obj/
-*.layout
-*.depend
-*.cbp
-trash.c
+#bin/
+#lib/
+#obj/
+#*.layout
+#*.depend
+#*.cbp
+#trash.c
