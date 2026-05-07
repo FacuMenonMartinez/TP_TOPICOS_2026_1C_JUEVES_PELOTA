@@ -36,6 +36,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="caracteres.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="caracteres.h" />
 		<Unit filename="dibujos.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -51,6 +55,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="piezas.h" />
+		<Unit filename="puntaje.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="puntaje.h" />
 		<Unit filename="recursos.c">
 			<Option compilerVar="CC" />
 		</Unit>
