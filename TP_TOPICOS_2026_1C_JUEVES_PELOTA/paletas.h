@@ -23,6 +23,8 @@
 #define NEGRO   13
 #define AUX     14
 #define AUX_2   15
+//#define Mc 16 //Mino contorno
+//#define Mb 17 //Mino base
 
 extern const tGBT_ColorRGB paleta_Vivos[CANT_COLORES], paleta_Nocturnos[CANT_COLORES], paleta_Metalicos[CANT_COLORES];
 
