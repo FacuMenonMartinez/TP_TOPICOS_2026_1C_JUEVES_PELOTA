@@ -7,10 +7,12 @@
 #include "GBT/gbt.h"
 #include "paletas.h"
 #include "recursos.h"
+#include "tablero.h"
 
 #define ANCHO_VENTANA 640
 #define ALTO_VENTANA 480
 #define ESCALA_VENTANA 2
+
 
 
 #define CANT_NIVELES 15
@@ -137,6 +139,8 @@ int main(int argc, char* argv[])
 
         //Llenar el backbuffer con un color
         gbt_borrar_backbuffer(AUX);
+
+        dibujar_marco(Zc, Zb);
 
         //Hacer giladas
 

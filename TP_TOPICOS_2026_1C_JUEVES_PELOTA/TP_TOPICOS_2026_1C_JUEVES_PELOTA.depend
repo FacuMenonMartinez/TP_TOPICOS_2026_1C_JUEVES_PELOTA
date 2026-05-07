@@ -75,7 +75,7 @@
 	"piezas.h"
 	"recursos.h"
 
-1778119647 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\dibujos.h
+1778169624 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\dibujos.h
 	"piezas.h"
 
 1778119647 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\piezas.h
@@ -107,7 +107,7 @@
 1778119647 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\recursos.h
 	"dibujos.h"
 
-1778126411 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\main.c
+1778166973 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\main.c
 	<stdio.h>
 	<stdlib.h>
 	<stdint.h>
@@ -116,8 +116,9 @@
 	"GBT/gbt.h"
 	"paletas.h"
 	"recursos.h"
+	"tablero.h"
 
-1778119647 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\paletas.h
+1778162386 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\paletas.h
 	"GBT/gbt.h"
 
 1778119647 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\paletas.c
@@ -130,4 +131,12 @@
 	"recursos.h"
 
 1778119647 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\trash.c
+
+1778167285 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\tablero.c
+	"tablero.h"
+	"recursos.h"
+	"GBT/gbt.h"
+
+1778165258 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\tablero.h
+	<stdint.h>
 
