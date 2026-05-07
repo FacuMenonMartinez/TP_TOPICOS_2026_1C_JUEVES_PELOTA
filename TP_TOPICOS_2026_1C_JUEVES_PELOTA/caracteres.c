@@ -4,7 +4,7 @@ const uint8_t fuente_Primera[CANTIDAD_CARACTERES][FUENTE_PRIMERA_ALTO][FUENTE_PR
 {
     {
         //C_0
-        {0,0,1,1,1,1,1,1,1,1,8,8},
+        {0,0,1,1,1,1,1,1,1,1,0,0},
         {0,1,1,2,2,2,2,2,2,1,1,0},
         {0,1,2,3,3,3,3,3,3,3,1,0},
         {0,1,2,3,3,3,3,3,3,3,1,0},
@@ -225,7 +225,7 @@ const uint8_t fuente_Primera[CANTIDAD_CARACTERES][FUENTE_PRIMERA_ALTO][FUENTE_PR
         {0,1,1,2,2,2,2,2,2,1,1,0},
         {0,1,2,2,3,3,3,3,3,3,1,0},
         {0,1,2,3,3,3,3,3,3,3,1,0},
-        {0,1,2,3,3,1,1,1,0,0,1,0},
+        {0,1,2,3,3,1,1,1,3,3,1,0},
         {0,1,2,3,3,1,0,1,1,1,1,0},
         {0,1,2,3,3,1,0,0,0,0,0,0},
         {0,1,2,3,3,1,0,0,0,0,0,0},
@@ -970,7 +970,7 @@ uint8_t unidad_Minima_F2[4][4]=
     {2,3,4,5}
 };
 
-void dibujar_Caracter_F1(uint8_t caracter[][FUENTE_PRIMERA_ANCHO],uint8_t eje_X, uint8_t eje_Y, uint8_t escala)
+void dibujar_Caracter_F1(uint8_t caracter[][FUENTE_PRIMERA_ANCHO],uint16_t eje_X, uint16_t eje_Y, uint8_t escala, uint8_t sombra, uint8_t luz, uint8_t base)
 {
 
 
@@ -980,13 +980,20 @@ void dibujar_Caracter_F1(uint8_t caracter[][FUENTE_PRIMERA_ANCHO],uint8_t eje_X,
         for(uint8_t j=0; j<FUENTE_PRIMERA_ANCHO; j++)  //Ciclo que itera sobre las columna de la matriz a dibujar
         {
 
-            for(uint8_t dy=0 ; dy< escala; dy++) // Ciclo que junto con el de abajo
+
+           for(uint8_t dy=0 ; dy< escala; dy++) // Ciclo que junto con el de abajo
             {
                 //generan una escala, dibujando el mismo lugar de la matriz
                 for (uint8_t dx=0; dx< escala; dx++) //más veces
                 {
+                    if(caracter[i][j]== 1)
+                        gbt_dibujar_pixel(eje_X + j*escala + dx, eje_Y + i*escala + dy, sombra);
 
-                    gbt_dibujar_pixel(eje_X + j*escala + dx, eje_Y+ i*escala + dy, caracter[i][j]);
+                    if (caracter[i][j]==2)
+                        gbt_dibujar_pixel(eje_X + j*escala + dx, eje_Y + i*escala + dy, luz);
+                    if(caracter[i][j]==3)
+                        gbt_dibujar_pixel(eje_X + j*escala + dx, eje_Y + i*escala + dy, base);
+
                 }
             }
 

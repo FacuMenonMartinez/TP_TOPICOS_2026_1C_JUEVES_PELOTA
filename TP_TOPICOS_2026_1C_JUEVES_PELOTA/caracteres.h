@@ -59,7 +59,7 @@ extern const bool fuente_Segunda[CANTIDAD_CARACTERES][FUENTE_SEGUNDA_ALTO][FUENT
 extern bool unidad_Minima_F1[2][2];
 extern uint8_t unidad_Minima_F2[4][4];
 
-void dibujar_Caracter_F1(uint8_t[][FUENTE_PRIMERA_ANCHO],uint8_t,uint8_t, uint8_t);
+void dibujar_Caracter_F1(uint8_t[][FUENTE_PRIMERA_ANCHO],uint16_t,uint16_t, uint8_t,uint8_t,uint8_t,uint8_t);
 
 
 #endif // CARACTERES_H_INCLUDED

@@ -11,9 +11,9 @@
 #include "puntaje.h"
 
 
-#define ANCHO_VENTANA 640
-#define ALTO_VENTANA 480
-#define ESCALA_VENTANA 1
+#define ANCHO_VENTANA 320
+#define ALTO_VENTANA 200
+#define ESCALA_VENTANA 3
 
 
 #define CANT_NIVELES 15
@@ -138,7 +138,8 @@ int main(int argc, char* argv[])
 
         //Llenar el backbuffer con un color
         gbt_borrar_backbuffer(AUX);
-        dibujar_Caracter_F1(fuente_Primera[c_C],10,10,3);
+        dibujar_Caracter_F1(fuente_Primera[c_C],ANCHO_VENTANA-12,0,1,7,2,9);
+
 
         //Hacer giladas
 

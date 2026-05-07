@@ -15,8 +15,8 @@ void mostrar_Puntaje (int puntos, uint8_t eje_X, uint8_t eje_Y){
     int u_Uni=puntos%10;
 
     //Llamo a la funcion dibujar Caracter y le paso las coordenadas para que queden una al lado de la otra.
-        dibujar_Caracter_F1(fuente_Primera[u_Mil], eje_X,eje_Y,1);
-        dibujar_Caracter_F1(fuente_Primera[u_Cien], eje_X + 12,eje_Y,1);
-        dibujar_Caracter_F1(fuente_Primera[u_Dec], eje_X + 24,eje_Y,1);
-        dibujar_Caracter_F1(fuente_Primera[u_Uni], eje_X + 36,eje_Y,1);
+        dibujar_Caracter_F1(fuente_Primera[u_Mil], eje_X,eje_Y,1,12,5,4);
+        dibujar_Caracter_F1(fuente_Primera[u_Cien], eje_X + 12,eje_Y,1,12,5,4);
+        dibujar_Caracter_F1(fuente_Primera[u_Dec], eje_X + 24,eje_Y,1,12,5,4);
+        dibujar_Caracter_F1(fuente_Primera[u_Uni], eje_X + 36,eje_Y,1,12,5,4);
 }
