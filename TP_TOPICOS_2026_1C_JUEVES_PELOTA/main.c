@@ -144,7 +144,7 @@ int main(int argc, char* argv[])
 
         //Llenar el backbuffer con un color
         gbt_borrar_backbuffer(AUX);
-        dibujar_Caracter_F1(fuente_Primera[c_C],ANCHO_VENTANA-12,0,1,7,2,9);
+        dibujar_Caracter_F1(fuente_Primera[c_Z],ANCHO_VENTANA-12,0,1,7,2,9);
 
 
         dibujar_marco(Zc, Zb);
