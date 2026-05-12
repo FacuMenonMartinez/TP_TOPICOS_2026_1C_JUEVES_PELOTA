@@ -1,4 +1,9 @@
+#include "piezas.h"
 #include "recursos.h"
+
+
+uint16_t grilla_Origen_X =  (VENTANA_ANCHO/2)-((GRILLA_COL * (MINO_LADO + (MINO_BORDE *2)))/2);
+uint16_t grilla_Origen_Y  =  20;
 
 bool grilla_Juego[GRILLA_FIL][GRILLA_COL] = {{0}};
 
@@ -12,4 +17,3 @@ void actualizar_Grilla(bool grilla[][GRILLA_COL], pieza_Grilla pieza[], pieza_Po
         }
     }
 }
-

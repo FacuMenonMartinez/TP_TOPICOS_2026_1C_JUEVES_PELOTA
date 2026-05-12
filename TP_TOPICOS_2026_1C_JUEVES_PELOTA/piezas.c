@@ -1,7 +1,9 @@
 #include "piezas.h"
+#include "recursos.h"
 
 const bool pieza_Mino[MINO_LADO][MINO_LADO] =
     //Version 1
+    /*
     {
     {1,1,1,1,1,1,1,1},
     {1,1,1,1,1,1,1,1},
@@ -12,7 +14,7 @@ const bool pieza_Mino[MINO_LADO][MINO_LADO] =
     {1,1,1,1,1,1,1,1},
     {1,1,1,1,1,1,1,1},
     };
-
+    */
     /*
     //Version 2
     {
@@ -26,13 +28,14 @@ const bool pieza_Mino[MINO_LADO][MINO_LADO] =
     {0,0,0,0,0,0,0,0},
     };
     */
-    /*
+
     //Version 4x4
+    {
     {1,1,1,1},
     {1,0,0,1},
     {1,0,0,1},
     {1,1,1,1},
-    */
+    };
 const pieza_Grilla pieza_T[ROTACIONES] = {
     //Posicion 0 grados
     {
@@ -249,3 +252,49 @@ const pieza_Grilla pieza_I[ROTACIONES] = {
         {0,0,0,0},
     },
 };
+
+void pieza_Girar(pieza_Pos *pieza, eGBT_Tecla *tecla){
+    switch (*tecla){
+
+        case GBTK_a:
+            printf("Pieza girada en sentido anti horario\n");
+            if (pieza->Rot == 0){
+                pieza->Rot = 3;
+            }
+            else{
+                pieza->Rot--;
+            }
+            break;
+
+        case GBTK_d:
+            printf("Pieza girada en sentido horario\n");
+            pieza->Rot++;
+            if(pieza->Rot > 3){
+                pieza->Rot = 0;
+            }
+            break;
+
+        default:
+            break;
+    }
+}
+
+void pieza_Desplazar(eGBT_Tecla *izq, eGBT_Tecla *der, pieza_Pos *pieza){
+    if (*izq){
+        printf("Pieza desplazada a izquierda\n");
+        if(pieza->X > 0){
+            pieza->X --;
+        }
+    }
+    if (*der){
+        printf("Pieza desplazada a derecha\n");
+        if (pieza->X <GRILLA_COL){
+            pieza->X ++;
+        }
+    }
+}
+
+
+
+
+

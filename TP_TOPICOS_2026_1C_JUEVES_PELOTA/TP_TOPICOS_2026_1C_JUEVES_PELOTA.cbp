@@ -63,10 +63,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="recursos.h" />
-		<Unit filename="tablero.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="tablero.h" />
 		<Unit filename="trash.c">
 			<Option compilerVar="CC" />
 		</Unit>
