@@ -11,10 +11,6 @@
 #include "caracteres.h"
 #include "puntaje.h"
 
-#define ANCHO_VENTANA 320   //Enviar a recursos
-#define ALTO_VENTANA 200    //Enviar a recursos
-#define ESCALA_VENTANA 1    //Enviar a recursos
-
 #define CANT_NIVELES 15
 
 const uint8_t tabla_Niveles[CANT_NIVELES] = {48, 43, 38, 33, 28, 23, 18, 13, 8, 6, 5, 4, 3, 2, 1};
@@ -31,10 +27,10 @@ int main(int argc, char* argv[])
 
     //Definir nombre de ventana
     char nombreVentana[128];
-    sprintf(nombreVentana, "Ventana %dx%d", ANCHO_VENTANA, ALTO_VENTANA);
+    sprintf(nombreVentana, "Ventana %dx%d", VENTANA_ANCHO, VENTANA_ALTO);
 
     //Crear ventana
-    if (gbt_crear_ventana(nombreVentana, ANCHO_VENTANA, ALTO_VENTANA, ESCALA_VENTANA) != 0) {
+    if (gbt_crear_ventana(nombreVentana, VENTANA_ANCHO, VENTANA_ALTO, ESCALA_VENTANA) != 0) {
         fprintf(stderr, "Error al iniciar el modulo de graficos de GBT: %s\n", gbt_obtener_log());
         return -1;
     }
@@ -108,7 +104,7 @@ int main(int argc, char* argv[])
 
         //Hacer giladas
 
-        dibujar_Caracter_F1(fuente_Primera[c_Z],ANCHO_VENTANA-12,0,1,7,2,9);
+        dibujar_Caracter_F1(fuente_Primera[c_Z],VENTANA_ANCHO-12,0,1,7,2,9);
 
         //Giro de la pieza
         pieza_Girar(&pieza_Posicion, &tecla);
