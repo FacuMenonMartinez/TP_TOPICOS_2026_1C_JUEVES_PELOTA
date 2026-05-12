@@ -10,9 +10,9 @@
 
 void calcular_Posicion(uint8_t grilla_X,uint8_t grilla_Y, uint16_t  *coord_X, uint16_t  *coord_Y){
     //Calcular coordenada X
-    *coord_X = GRILLA_ORIGEN_X + (grilla_X * (MINO_LADO + (MINO_BORDE *2)));
+    *coord_X = grilla_Origen_X + (grilla_X * (MINO_LADO + (MINO_BORDE *2)));
     //Calcular coordenada Y
-    *coord_Y = GRILLA_ORIGEN_Y + (grilla_Y * (MINO_LADO + (MINO_BORDE *2)));
+    *coord_Y = grilla_Origen_Y + (grilla_Y * (MINO_LADO + (MINO_BORDE *2)));
 }
 
 void dibujar_mino(uint16_t oX, uint16_t oY, uint8_t color_Centro, uint8_t color_Borde){

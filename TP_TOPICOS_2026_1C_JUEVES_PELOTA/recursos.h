@@ -3,14 +3,19 @@
 
 #include "dibujos.h"
 
-#define GRILLA_FIL 20
+#define VENTANA_ANCHO 320
+#define VENTANA_ALTO 200
+#define ESCALA_VENTANA 4
+//VGA: 640x480 CGA: 320x200
+
+#define GRILLA_FIL 24
 #define GRILLA_COL 10
 
-#define GRILLA_ORIGEN_X 250
-#define GRILLA_ORIGEN_Y 10
+extern uint16_t grilla_Origen_X, grilla_Origen_Y;
 
 //Matriz de posiciones ocupadas en el juego
 extern bool grilla_Juego[GRILLA_FIL][GRILLA_COL];
+
 
 //Funcion para actualizar matriz de posiciones
 /*
@@ -19,5 +24,7 @@ la pieza que se va a dibujar (bitmap)
 y la posicion de la pieza que se va a dibuajar (x,y,rotacion)
 */
 void actualizar_Grilla(bool grilla[][GRILLA_COL], pieza_Grilla pieza[], pieza_Pos posicion);
+
+
 
 #endif // RECURSOS_H_INCLUDED

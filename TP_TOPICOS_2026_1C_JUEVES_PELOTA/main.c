@@ -10,15 +10,10 @@
 
 #include "caracteres.h"
 #include "puntaje.h"
-#include "tablero.h"
 
-
-
-#define ANCHO_VENTANA 320
-#define ALTO_VENTANA 200
-#define ESCALA_VENTANA 3
-
-
+#define ANCHO_VENTANA 320   //Enviar a recursos
+#define ALTO_VENTANA 200    //Enviar a recursos
+#define ESCALA_VENTANA 1    //Enviar a recursos
 
 #define CANT_NIVELES 15
 
@@ -50,13 +45,7 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    tGBT_Temporizador *temporizador = gbt_temporizador_crear(0.1);
-    if (!temporizador) {
-        fprintf(stderr, "Error al crear el temporizador para los dibujos: %s\n", gbt_obtener_log());
-        return -1;
-    }
-
-    tGBT_Temporizador *temporizador_2 = gbt_temporizador_crear(0.1);
+    tGBT_Temporizador *temporizador = gbt_temporizador_crear(0.5);
     if (!temporizador) {
         fprintf(stderr, "Error al crear el temporizador para los dibujos: %s\n", gbt_obtener_log());
         return -1;
@@ -67,11 +56,9 @@ int main(int argc, char* argv[])
     uint8_t corriendo = 1;
     uint8_t contador_Frames = 0;
     uint8_t nivel = 0;
-    ///SETEAR LA PIEZA CON EL RANDOM
     bool pieza_Nueva = 1;
    //Posicion de pieza
     pieza_Pos pieza_Posicion;
-    ///pieza_Pos piezaSig_Posicion;
 
     while(corriendo){
 
@@ -85,36 +72,10 @@ int main(int argc, char* argv[])
         }
 
         //Detectar algun evento de tecla
-
         gbt_procesar_entrada();
         eGBT_Tecla tecla = gbt_obtener_tecla_presionada();
-
-        //Deteccion de teclas de desplazamiento por flanco y mantenidas
-        uint8_t mover_Der_F = gbt_tecla_presionada(GBTK_DERECHA);
-        uint8_t mover_Der_Press = gbt_tecla_sostenida(GBTK_DERECHA);
-        uint8_t mover_Der = 0;
-
-        uint8_t mover_Izq_F = gbt_tecla_presionada(GBTK_IZQUIERDA);
-        uint8_t mover_Izq_Press = gbt_tecla_sostenida(GBTK_IZQUIERDA);
-        uint8_t mover_Izq = 0;
-
-        //Filtrin de tiempo para que no se mueva tan rapido
-        if (gbt_temporizador_consumir(temporizador)){
-            mover_Der = mover_Der_F || mover_Der_Press;
-        }
-        if (gbt_temporizador_consumir(temporizador_2)){
-            mover_Izq = mover_Izq_F || mover_Izq_Press;
-        }
-
-        //Deteccion de tecla de rotacion
-        if (tecla == GBTK_ESPACIO){
-            printf("Pieza girada\n");
-            pieza_Posicion.Rot++;
-            if(pieza_Posicion.Rot > 3){
-                pieza_Posicion.Rot = GRADOS_0;
-            }
-        }
-        ///pieza_Posicion.Rot = (pieza_Posicion.Rot + 1) & 3;
+        eGBT_Tecla pieza_Mov_Der = gbt_tecla_soltada(GBTK_DERECHA);
+        eGBT_Tecla pieza_Mov_Izq = gbt_tecla_soltada(GBTK_IZQUIERDA);
 
         //Salir de la ejecucion
         if (tecla == GBTK_ESCAPE){
@@ -144,47 +105,30 @@ int main(int argc, char* argv[])
 
         //Llenar el backbuffer con un color
         gbt_borrar_backbuffer(AUX);
-        dibujar_Caracter_F1(fuente_Primera[c_Z],ANCHO_VENTANA-12,0,1,7,2,9);
-
-
-        dibujar_marco(Zc, Zb);
 
         //Hacer giladas
 
-        //Desplazamiento lateral
-        if(mover_Der){
-            printf("Pieza desplazada DER\n");
-            pieza_Posicion.X ++;
-            if (pieza_Posicion.X > GRILLA_COL-1){
-                pieza_Posicion.X = GRILLA_COL-1;
-            }
-        }
-        if(mover_Izq){
-            printf("Pieza desplazada IZQ\n");
-            if (pieza_Posicion.X > 0){
-                pieza_Posicion.X --;
-            }
-        }
+        dibujar_Caracter_F1(fuente_Primera[c_Z],ANCHO_VENTANA-12,0,1,7,2,9);
+
+        //Giro de la pieza
+        pieza_Girar(&pieza_Posicion, &tecla);
+
+        //Movimiento de la pieza
+        pieza_Desplazar(&pieza_Mov_Izq, &pieza_Mov_Der, &pieza_Posicion);
 
         //Caida de la pieza por "Gravedad"
         if (contador_Frames >= tabla_Niveles[nivel]) {
                 contador_Frames = 0;
                 pieza_Posicion.Y++;
         }
-        ///------------------------------
-        if(pieza_Posicion.Y > 25)
-        {
-            pieza_Posicion.Y --;
-            pieza_Nueva = 1;
-        }
+
 
         //Detectar colision
         //Agregar colision a la condicion para que deje de sumar y la dibuje en el lugar que quedo
 
 
         //Dibujar la pieza en la pos que le corresponda
-        dibujar_Pieza(pieza_J, pieza_Posicion,Sc, Sb);
-
+        dibujar_Pieza(pieza_L, pieza_Posicion,Sc, Sb);
 
         //Volcar pixeles dibujados en el backbuffer a la ventana
         gbt_volcar_backbuffer();
@@ -194,7 +138,6 @@ int main(int argc, char* argv[])
     }
 
     gbt_temporizador_destruir(temporizador);
-    gbt_temporizador_destruir(temporizador_2);
     gbt_destruir_ventana();
     gbt_cerrar();
     return 0;

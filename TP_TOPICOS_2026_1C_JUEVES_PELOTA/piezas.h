@@ -1,13 +1,15 @@
 #ifndef PIEZAS_H_INCLUDED
 #define PIEZAS_H_INCLUDED
 
+#include <stdio.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include "GBT/gbt.h"
 
-#define MINO_LADO 8
-#define MINO_BORDE 3
-#define PIEZA_LADO 4
-#define ROTACIONES 4
+#define MINO_LADO   4 //Unidad Px
+#define MINO_BORDE  2 //Unidad Px
+#define PIEZA_LADO  4 //Unidad Mino
+#define ROTACIONES  4
 
 typedef enum{
 GRADOS_0 = 0,
@@ -37,5 +39,9 @@ extern const pieza_Grilla   pieza_T[ROTACIONES],
                             pieza_S[ROTACIONES],
                             pieza_Z[ROTACIONES],
                             pieza_I[ROTACIONES];
+
+void pieza_Girar(pieza_Pos *pieza, eGBT_Tecla *tecla);
+
+void pieza_Desplazar(eGBT_Tecla *izq, eGBT_Tecla *der, pieza_Pos *pieza);
 
 #endif // PIEZAS_H_INCLUDED
