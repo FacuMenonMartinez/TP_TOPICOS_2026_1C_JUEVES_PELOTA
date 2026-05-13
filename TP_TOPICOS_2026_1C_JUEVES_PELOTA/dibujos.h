@@ -18,7 +18,6 @@ void dibujar_mino(uint16_t oX, uint16_t oY, uint8_t color_Centro, uint8_t color_
 
 
 //Funcion para dibujar pieza
-void dibujar_Pieza(pieza_Grilla pieza[], pieza_Pos posicion, uint8_t color_Centro,uint8_t color_Borde);
-
+void dibujar_Pieza(e_Piezas pieza, pieza_Pos posicion, uint8_t color_Centro,uint8_t color_Borde);
 
 #endif // DIBUJOS_H_INCLUDED

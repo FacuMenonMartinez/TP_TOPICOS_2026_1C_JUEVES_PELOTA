@@ -40,12 +40,12 @@ void dibujar_Pieza(pieza_Grilla pieza[], uint16_t oX, uint16_t oY, uint8_t rotac
 }
 */
 //Nueva version donde mando un struct que contiene indices de X e Y referidos a la grilla juego
-void dibujar_Pieza(pieza_Grilla pieza[], pieza_Pos posicion, uint8_t color_Centro,uint8_t color_Borde){
+void dibujar_Pieza(e_Piezas pieza, pieza_Pos posicion, uint8_t color_Centro,uint8_t color_Borde){
     uint16_t oX = 0 ,oY = 0;
     calcular_Posicion(posicion.X, posicion.Y, &oX, &oY);
     for(uint16_t i = 0; i<PIEZA_LADO; i++){
         for(uint16_t j = 0; j<PIEZA_LADO; j++){
-            if (pieza[posicion.Rot][j][i] == true){
+            if (piezas[pieza][posicion.Rot][j][i] == true){
                 dibujar_mino(oX + (i*(MINO_LADO+MINO_BORDE)), oY + (j* (MINO_LADO+MINO_BORDE)), color_Centro,color_Borde);
             }
         }
