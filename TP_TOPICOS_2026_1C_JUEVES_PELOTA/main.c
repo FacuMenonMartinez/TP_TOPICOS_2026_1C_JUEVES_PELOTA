@@ -62,8 +62,8 @@ int main(int argc, char* argv[])
         if (pieza_Nueva){
             pieza_Posicion.X =      GRILLA_COL/2;
             pieza_Posicion.Y =      5;
-            pieza_Posicion.Rot =    GRADOS_0;
-            dibujar_Pieza(pieza_L, pieza_Posicion,Sc, Sb);
+            pieza_Posicion.Rot =    e_Pieza_0;
+            dibujar_Pieza(e_Pieza_L, pieza_Posicion,Sc, Sb);
             pieza_Nueva = 0;
         }
 
@@ -124,7 +124,7 @@ int main(int argc, char* argv[])
 
 
         //Dibujar la pieza en la pos que le corresponda
-        dibujar_Pieza(pieza_L, pieza_Posicion,Sc, Sb);
+        dibujar_Pieza(e_Pieza_L, pieza_Posicion,Sc, Sb);
 
         //Volcar pixeles dibujados en el backbuffer a la ventana
         gbt_volcar_backbuffer();
