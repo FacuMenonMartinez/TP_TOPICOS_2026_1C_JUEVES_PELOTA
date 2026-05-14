@@ -158,10 +158,10 @@
 	"recursos.h"
 	"GBT/gbt.h"
 
-1778546999 source:c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\caracteres.c
+1778767118 source:c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\caracteres.c
 	"caracteres.h"
 
-1778546999 c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\caracteres.h
+1778767117 c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\caracteres.h
 	<stdbool.h>
 	<stdio.h>
 	<stdint.h>
@@ -189,7 +189,7 @@
 	<stdlib.h>
 	<stdint.h>
 
-1778643066 source:c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\dibujos.c
+1778785889 source:c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\dibujos.c
 	<stdio.h>
 	<stdlib.h>
 	<stdint.h>
@@ -197,12 +197,12 @@
 	"dibujos.h"
 	"GBT/gbt.h"
 	"piezas.h"
-	"recursos.h"
+	"movimiento.h"
 
-1778643074 c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\dibujos.h
+1778785568 c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\dibujos.h
 	"piezas.h"
 
-1778723906 c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\piezas.h
+1778776965 c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\piezas.h
 	<stdio.h>
 	<stdbool.h>
 	<stdint.h>
@@ -211,7 +211,7 @@
 1778638591 c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\recursos.h
 	"dibujos.h"
 
-1778723921 source:c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\main.c
+1778787171 source:c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\main.c
 	<stdio.h>
 	<stdlib.h>
 	<stdint.h>
@@ -219,11 +219,12 @@
 	<stdbool.h>
 	"GBT/gbt.h"
 	"paletas.h"
-	"recursos.h"
+	"movimiento.h"
+	"dibujos.h"
 	"caracteres.h"
 	"puntaje.h"
 
-1778546999 c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\paletas.h
+1778767318 c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\paletas.h
 	"GBT/gbt.h"
 
 1778546999 c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\puntaje.h
@@ -232,14 +233,14 @@
 1778546999 c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\tablero.h
 	<stdint.h>
 
-1778546999 source:c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\paletas.c
+1778767303 source:c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\paletas.c
 	"paletas.h"
 
-1778723903 source:c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\piezas.c
+1778782746 source:c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\piezas.c
 	"piezas.h"
-	"recursos.h"
+	"movimiento.h"
 
-1778546999 source:c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\puntaje.c
+1778767238 source:c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\puntaje.c
 	"puntaje.h"
 	"caracteres.h"
 
@@ -253,4 +254,16 @@
 	"GBT/gbt.h"
 
 1778546999 source:c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\trash.c
+
+1778733917 source:c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\colisiones.c
+	"colisiones.h"
+
+1778733774 c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\colisiones.h
+	"movimiento.h"
+
+1778787234 c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\movimiento.h
+	"piezas.h"
+
+1778782964 source:c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\movimiento.c
+	"movimiento.h"
 

@@ -6,7 +6,8 @@
 
 #include "GBT/gbt.h"
 #include "paletas.h"
-#include "recursos.h"
+#include "movimiento.h"
+#include "dibujos.h"
 
 #include "caracteres.h"
 #include "puntaje.h"
@@ -41,32 +42,23 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    tGBT_Temporizador *temporizador = gbt_temporizador_crear(0.5);
+    tGBT_Temporizador *temporizador = gbt_temporizador_crear(0.016); //16ms
     if (!temporizador) {
         fprintf(stderr, "Error al crear el temporizador para los dibujos: %s\n", gbt_obtener_log());
         return -1;
     }
 
-    srand(time(0));
-
+    srand(time(NULL));
     uint8_t corriendo = 1;
     uint8_t contador_Frames = 0;
-    uint8_t nivel = 0;
+    uint8_t nivel = 3;
     bool pieza_Nueva = 1;
+    uint8_t pieza_indice = 0;
    //Posicion de pieza
-    pieza_Pos pieza_Posicion;
+    pieza_Pos pieza_Pos_Actual, pieza_Pos_Siguiente;
+
 
     while(corriendo){
-
-        //Dibujar pieza en coordenada de inicio
-        if (pieza_Nueva){
-            pieza_Posicion.X =      GRILLA_COL/2;
-            pieza_Posicion.Y =      5;
-            pieza_Posicion.Rot =    e_Pieza_0;
-            dibujar_Pieza(e_Pieza_L, pieza_Posicion,Sc, Sb);
-            pieza_Nueva = 0;
-        }
-
         //Detectar algun evento de tecla
         gbt_procesar_entrada();
         eGBT_Tecla tecla = gbt_obtener_tecla_presionada();
@@ -77,8 +69,7 @@ int main(int argc, char* argv[])
             printf("Saliendo del ejemplo\n");
         }
 
-        //Cambiar paleta de colores
-        //Meter en una funcion segun la necesidad de cambiar de paleta
+        //Giladas con la paleta de colores
         switch (tecla){
             case GBTK_u:
                 paleta_Activa = PALETA_VIVOS;
@@ -92,40 +83,125 @@ int main(int argc, char* argv[])
             default:
                 break;
         }
+        //Aplicar nueva paleta
         if (gbt_aplicar_paleta(paletas[paleta_Activa], CANT_COLORES, GBT_FORMATO_888) != 0) {
             fprintf(stderr, "Error al aplicar la nueva paleta de colores: %s\n", gbt_obtener_log());
             return -1;
         }
 
+        //Dibujar pieza en coordenada de inicio
+        if (pieza_Nueva){
+            pieza_indice = rand() % 7; //Generar pieza random / Reemplazar por algun algoritmo mas piola
+            pieza_Pos_Actual.X =      GRILLA_COL/2;
+            pieza_Pos_Actual.Y =      0;
+            pieza_Pos_Actual.Rot =    e_Pieza_0;      //Generar pieza aleatoria
+            dibujar_Pieza(pieza_indice, &pieza_Pos_Actual,Sc, Sb);
+            pieza_Nueva = 0;
+        }
+
+        //Contador de frames em funcion del temporizador
+        if (gbt_temporizador_consumir(temporizador)){
+            contador_Frames++;
+        }
+
+        //modificadores de velocidad
+
+        //----- Desplazamiento hacia la derecha -----
+
+        pieza_Pos_Siguiente = pieza_Pos_Actual;
+        //Actualizar coordenada
+        if (tecla == GBTK_DERECHA){
+            movimiento_Der(&pieza_Pos_Siguiente);
+        }
+        //Verificar si la nueva posicion es valida
+        if(posicion_Valida(pieza_indice, &pieza_Pos_Siguiente)){
+            //Actualizar posicion en la grilla
+            pieza_Pos_Actual = pieza_Pos_Siguiente;
+        }
+        //----- Desplazamiento hacia la izquierda-----
+
+        pieza_Pos_Siguiente = pieza_Pos_Actual;
+        //Actualizar coordenada
+        if (tecla == GBTK_IZQUIERDA){
+            movimiento_Izq(&pieza_Pos_Siguiente);
+        }
+        //Verificar si la nueva posicion es valida
+        if(posicion_Valida(pieza_indice, &pieza_Pos_Siguiente)){
+            //Actualizar posicion en la grilla
+            pieza_Pos_Actual = pieza_Pos_Siguiente;
+        }
+
+        //----- Giro horario -----
+
+        pieza_Pos_Siguiente = pieza_Pos_Actual;
+        //Actualizar coordenada
+        if (tecla == GBTK_d){
+            movimiento_Giro_H(&pieza_Pos_Siguiente);
+        }
+        //Verificar si la nueva posicion es valida
+        if(posicion_Valida(pieza_indice, &pieza_Pos_Siguiente)){
+            //Actualizar posicion en la grilla
+            pieza_Pos_Actual = pieza_Pos_Siguiente;
+        }
+        //----- Giro anti horario -----
+
+        pieza_Pos_Siguiente = pieza_Pos_Actual;
+        //Actualizar coordenada
+        if (tecla == GBTK_a){
+            movimiento_Giro_AH(&pieza_Pos_Siguiente);
+        }
+        //Verificar si la nueva posicion es valida
+        if(posicion_Valida(pieza_indice, &pieza_Pos_Siguiente)){
+            //Actualizar posicion en la grilla
+            pieza_Pos_Actual = pieza_Pos_Siguiente;
+        }
+
+        //----- Caida gravedad -----
+
+        pieza_Pos_Siguiente = pieza_Pos_Actual;
+        bool bajar= false;
+        if (contador_Frames >= tabla_Niveles[nivel]) {
+            contador_Frames = 0;
+            movimiento_Grav(&pieza_Pos_Siguiente);
+            bajar = true;
+        }
+        //Verificar si la pos es valida
+        if(posicion_Valida(pieza_indice, &pieza_Pos_Siguiente)){
+            //Actualizar posicion en la grilla
+            pieza_Pos_Actual = pieza_Pos_Siguiente;
+        }
+        else if(bajar) //Si tengo que bajar y no puedo >> bloquear la pieza
+        {
+            printf("coord x: %d coord y: %d\n", pieza_Pos_Actual.X, pieza_Pos_Actual.Y);
+            actualizar_Grilla(pieza_indice, &pieza_Pos_Actual);
+
+            //Verificar si se esta actualizando la grilla
+            printf("\nGRILLA: \n");
+            for(int i = 0; i <GRILLA_FIL; i++){
+                for(int j = 0; j<GRILLA_COL; j++){
+                    printf(" %d ", grilla_Juego[i][j]);
+                }
+                printf("\n");
+            }
+            printf("\n\n");
+
+            pieza_Nueva = 1;
+        }
+
+        //Eliminar filas completadas
+
         //Llenar el backbuffer con un color
         gbt_borrar_backbuffer(AUX);
 
         //Hacer giladas
-
-        dibujar_Caracter_F1(fuente_Primera[c_Z],VENTANA_ANCHO-12,0,1,7,2,9);
-
-        //Giro de la pieza
-        pieza_Movimiento(&pieza_Posicion, &tecla);
-
-        //Caida de la pieza por "Gravedad"
-        if (contador_Frames >= tabla_Niveles[nivel]) {
-                contador_Frames = 0;
-                pieza_Posicion.Y++;
-        }
-
-
-        //Detectar colision
-        //Agregar colision a la condicion para que deje de sumar y la dibuje en el lugar que quedo
-
+        dibujar_Caracter_F1(c_Z,VENTANA_ANCHO-12,0,1,7,2,9);
 
         //Dibujar la pieza en la pos que le corresponda
-        dibujar_Pieza(e_Pieza_L, pieza_Posicion,Sc, Sb);
-
+        dibujar_Pieza(pieza_indice, &pieza_Pos_Actual,Sc, Sb);
+        dibujar_Grilla_Juego();
         //Volcar pixeles dibujados en el backbuffer a la ventana
         gbt_volcar_backbuffer();
-
-        contador_Frames++;
-        gbt_esperar(16); //Aprox 60 FPS
+        gbt_esperar(10);
     }
 
     gbt_temporizador_destruir(temporizador);
@@ -133,3 +209,5 @@ int main(int argc, char* argv[])
     gbt_cerrar();
     return 0;
 }
+
+

@@ -47,6 +47,10 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="movimiento.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="movimiento.h" />
 		<Unit filename="paletas.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -59,10 +63,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="puntaje.h" />
-		<Unit filename="recursos.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="recursos.h" />
 		<Unit filename="trash.c">
 			<Option compilerVar="CC" />
 		</Unit>

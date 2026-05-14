@@ -970,7 +970,7 @@ uint8_t unidad_Minima_F2[4][4]=
     {2,3,4,5}
 };
 
-void dibujar_Caracter_F1(uint8_t caracter[][FUENTE_PRIMERA_ANCHO],uint16_t eje_X, uint16_t eje_Y, uint8_t escala, uint8_t sombra, uint8_t luz, uint8_t base)
+void dibujar_Caracter_F1(e_Caracter ecaracter,uint16_t eje_X, uint16_t eje_Y, uint8_t escala, uint8_t sombra, uint8_t luz, uint8_t base)
 {
 
 
@@ -986,12 +986,12 @@ void dibujar_Caracter_F1(uint8_t caracter[][FUENTE_PRIMERA_ANCHO],uint16_t eje_X
                 //generan una escala, dibujando el mismo lugar de la matriz
                 for (uint8_t dx=0; dx< escala; dx++) //más veces
                 {
-                    if(caracter[i][j]== 1)
+                    if(fuente_Primera[ecaracter][i][j]== 1)
                         gbt_dibujar_pixel(eje_X + j*escala + dx, eje_Y + i*escala + dy, sombra);
 
-                    if (caracter[i][j]==2)
+                    if (fuente_Primera[ecaracter][i][j]==2)
                         gbt_dibujar_pixel(eje_X + j*escala + dx, eje_Y + i*escala + dy, luz);
-                    if(caracter[i][j]==3)
+                    if(fuente_Primera[ecaracter][i][j]==3)
                         gbt_dibujar_pixel(eje_X + j*escala + dx, eje_Y + i*escala + dy, base);
 
                 }

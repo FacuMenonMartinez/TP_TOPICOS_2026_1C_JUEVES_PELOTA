@@ -37,6 +37,12 @@ e_Pieza_180,
 e_Pieza_270,
 }e_Piezas_Rotacion;
 
+typedef struct{
+    uint8_t borde;
+    uint8_t centro;
+}t_Pieza_Color;
+
+
 //Declaracion del cuadradito que formara las piezas
 extern const bool pieza_Mino[MINO_LADO][MINO_LADO];
 
@@ -44,19 +50,7 @@ extern const bool pieza_Mino[MINO_LADO][MINO_LADO];
 typedef bool pieza_Grilla[PIEZA_LADO][PIEZA_LADO];
 
 //Declaracion de piezas
-/*
-extern const pieza_Grilla   pieza_T[ROTACIONES],
-                            pieza_J[ROTACIONES],
-                            pieza_L[ROTACIONES],
-                            pieza_O[ROTACIONES],
-                            pieza_S[ROTACIONES],
-                            pieza_Z[ROTACIONES],
-                            pieza_I[ROTACIONES];
-*/
-//Re declaracion de las piezas para poder llamarlas con un indice y utilizar la funcion de nro aleatorio para generarla
 extern const pieza_Grilla piezas[CANT_PIEZAS][ROTACIONES];
-
-void pieza_Movimiento(pieza_Pos *pieza, eGBT_Tecla *tecla);
 
 
 #endif // PIEZAS_H_INCLUDED

@@ -6,18 +6,21 @@
 #include "dibujos.h"
 #include "GBT/gbt.h"
 #include "piezas.h"
-#include "recursos.h"
+#include "movimiento.h"
 
-void calcular_Posicion(uint8_t grilla_X,uint8_t grilla_Y, uint16_t  *coord_X, uint16_t  *coord_Y){
+void calcular_Posicion(uint16_t grilla_X,uint16_t grilla_Y, uint16_t  *coord_X, uint16_t  *coord_Y){
     //Calcular coordenada X
-    *coord_X = grilla_Origen_X + (grilla_X * (MINO_LADO + (MINO_BORDE *2)));
+    *coord_X = grilla_Origen_X + (grilla_X * (MINO_LADO + MINO_BORDE));
     //Calcular coordenada Y
-    *coord_Y = grilla_Origen_Y + (grilla_Y * (MINO_LADO + (MINO_BORDE *2)));
+    *coord_Y = grilla_Origen_Y + (grilla_Y * (MINO_LADO + MINO_BORDE));
 }
 
-void dibujar_mino(uint16_t oX, uint16_t oY, uint8_t color_Centro, uint8_t color_Borde){
+void dibujar_mino(uint16_t coord_X, uint16_t coord_Y, uint8_t color_Centro, uint8_t color_Borde){
 
     uint8_t color;
+    uint16_t oX = 0 ,oY = 0;
+    //Calcular posicion en pixeles de donde se va a dibujar
+    calcular_Posicion(coord_X, coord_Y, &oX, &oY);
 
     for(uint16_t y = 0; y < MINO_LADO; y++){
         for(uint16_t x = 0; x < MINO_LADO; x++){
@@ -27,49 +30,23 @@ void dibujar_mino(uint16_t oX, uint16_t oY, uint8_t color_Centro, uint8_t color_
     }
 }
 
-/*
-//version anterior donde le mandaba coordenadas en pixeles
-void dibujar_Pieza(pieza_Grilla pieza[], uint16_t oX, uint16_t oY, uint8_t rotacion, uint8_t color_Centro,uint8_t color_Borde){
+void dibujar_Pieza(e_Piezas pieza, pieza_Pos *posicion, uint8_t color_Centro,uint8_t color_Borde){
     for(uint16_t i = 0; i<PIEZA_LADO; i++){
         for(uint16_t j = 0; j<PIEZA_LADO; j++){
-            if (pieza[rotacion][j][i] == true){
-                dibujar_mino(oX + (i*(MINO_LADO+MINO_BORDE)), oY + (j* (MINO_LADO+MINO_BORDE)), color_Centro,color_Borde);
-            }
-        }
-    }
-}
-*/
-//Nueva version donde mando un struct que contiene indices de X e Y referidos a la grilla juego
-void dibujar_Pieza(e_Piezas pieza, pieza_Pos posicion, uint8_t color_Centro,uint8_t color_Borde){
-    uint16_t oX = 0 ,oY = 0;
-    calcular_Posicion(posicion.X, posicion.Y, &oX, &oY);
-    for(uint16_t i = 0; i<PIEZA_LADO; i++){
-        for(uint16_t j = 0; j<PIEZA_LADO; j++){
-            if (piezas[pieza][posicion.Rot][j][i] == true){
-                dibujar_mino(oX + (i*(MINO_LADO+MINO_BORDE)), oY + (j* (MINO_LADO+MINO_BORDE)), color_Centro,color_Borde);
+            if (piezas[pieza][posicion->Rot][j][i] == true){
+                dibujar_mino(posicion->X+i, posicion->Y+j, color_Centro,color_Borde);
             }
         }
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+void dibujar_Grilla_Juego(){
+    for(uint8_t y = 0; y<GRILLA_FIL; y++){
+        for(uint8_t x = 0; x<GRILLA_COL; x++){
+            if(grilla_Juego[y][x]){
+                //que hago con los colores?
+                dibujar_mino(x, y, 7, 4);
+            }
+        }
+    }
+}
