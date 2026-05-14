@@ -70,8 +70,6 @@ int main(int argc, char* argv[])
         //Detectar algun evento de tecla
         gbt_procesar_entrada();
         eGBT_Tecla tecla = gbt_obtener_tecla_presionada();
-        eGBT_Tecla pieza_Mov_Der = gbt_tecla_soltada(GBTK_DERECHA);
-        eGBT_Tecla pieza_Mov_Izq = gbt_tecla_soltada(GBTK_IZQUIERDA);
 
         //Salir de la ejecucion
         if (tecla == GBTK_ESCAPE){
@@ -107,10 +105,7 @@ int main(int argc, char* argv[])
         dibujar_Caracter_F1(fuente_Primera[c_Z],VENTANA_ANCHO-12,0,1,7,2,9);
 
         //Giro de la pieza
-        pieza_Girar(&pieza_Posicion, &tecla);
-
-        //Movimiento de la pieza
-        pieza_Desplazar(&pieza_Mov_Izq, &pieza_Mov_Der, &pieza_Posicion);
+        pieza_Movimiento(&pieza_Posicion, &tecla);
 
         //Caida de la pieza por "Gravedad"
         if (contador_Frames >= tabla_Niveles[nivel]) {

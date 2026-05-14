@@ -56,8 +56,7 @@ extern const pieza_Grilla   pieza_T[ROTACIONES],
 //Re declaracion de las piezas para poder llamarlas con un indice y utilizar la funcion de nro aleatorio para generarla
 extern const pieza_Grilla piezas[CANT_PIEZAS][ROTACIONES];
 
-void pieza_Girar(pieza_Pos *pieza, eGBT_Tecla *tecla);
+void pieza_Movimiento(pieza_Pos *pieza, eGBT_Tecla *tecla);
 
-void pieza_Desplazar(eGBT_Tecla *izq, eGBT_Tecla *der, pieza_Pos *pieza);
 
 #endif // PIEZAS_H_INCLUDED

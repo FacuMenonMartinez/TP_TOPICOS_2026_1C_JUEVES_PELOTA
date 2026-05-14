@@ -475,7 +475,7 @@ const pieza_Grilla pieza_I[ROTACIONES] = {
 };
 */
 
-void pieza_Girar(pieza_Pos *pieza, eGBT_Tecla *tecla){
+void pieza_Movimiento(pieza_Pos *pieza, eGBT_Tecla *tecla){
     switch (*tecla){
 
         case GBTK_a:
@@ -496,23 +496,22 @@ void pieza_Girar(pieza_Pos *pieza, eGBT_Tecla *tecla){
             }
             break;
 
+        case GBTK_DERECHA:
+                printf("Pieza desplazada a derecha\n");
+                if (pieza->X <GRILLA_COL){
+                    pieza->X ++;
+                }
+            break;
+
+        case GBTK_IZQUIERDA:
+            printf("Pieza desplazada a izquierda\n");
+            if(pieza->X > 0){
+                pieza->X --;
+            }
+            break;
+
         default:
             break;
-    }
-}
-
-void pieza_Desplazar(eGBT_Tecla *izq, eGBT_Tecla *der, pieza_Pos *pieza){
-    if (*izq){
-        printf("Pieza desplazada a izquierda\n");
-        if(pieza->X > 0){
-            pieza->X --;
-        }
-    }
-    if (*der){
-        printf("Pieza desplazada a derecha\n");
-        if (pieza->X <GRILLA_COL){
-            pieza->X ++;
-        }
     }
 }
 
