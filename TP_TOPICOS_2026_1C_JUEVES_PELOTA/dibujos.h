@@ -11,14 +11,16 @@ que dibuja la pieza
 
 */
 
-void calcular_Posicion(uint8_t grilla_X,uint8_t grilla_Y, uint16_t  *coord_X, uint16_t  *coord_Y);
+void calcular_Posicion(uint16_t grilla_X,uint16_t grilla_Y, uint16_t  *coord_X, uint16_t  *coord_Y);
 
 //Funcion para dibujar mino
-void dibujar_mino(uint16_t oX, uint16_t oY, uint8_t color_Centro, uint8_t color_Borde);
-
+void dibujar_mino(uint16_t coord_X, uint16_t coord_Y, uint8_t color_Centro, uint8_t color_Borde);
 
 //Funcion para dibujar pieza
-void dibujar_Pieza(e_Piezas pieza, pieza_Pos posicion, uint8_t color_Centro,uint8_t color_Borde);
+void dibujar_Pieza(e_Piezas pieza, pieza_Pos *posicion, uint8_t color_Centro,uint8_t color_Borde);
+
+//Dibujar la grilla con las piezas que se encuentran fijas
+void dibujar_Grilla_Juego();
 
 
 //Funcion para dibujar texto

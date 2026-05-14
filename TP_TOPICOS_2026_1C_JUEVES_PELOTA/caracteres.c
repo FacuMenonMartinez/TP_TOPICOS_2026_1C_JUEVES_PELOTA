@@ -989,6 +989,7 @@ uint8_t unidad_Minima_F2[4][4]=
     {2,3,4,5}
 };
 
+
 void dibujar_Caracter_F1(e_Caracter caracter ,uint16_t eje_X, uint16_t eje_Y, uint8_t escala, uint8_t sombra, uint8_t luz, uint8_t base)
 {
 
@@ -1012,13 +1013,11 @@ void dibujar_Caracter_F1(e_Caracter caracter ,uint16_t eje_X, uint16_t eje_Y, ui
                         gbt_dibujar_pixel(eje_X + j*escala + dx, eje_Y + i*escala + dy, luz);
                     if(fuente_Primera[caracter][i][j]==3)
                         gbt_dibujar_pixel(eje_X + j*escala + dx, eje_Y + i*escala + dy, base);
-
                 }
             }
 
         }
     }
-
 }
 
 
