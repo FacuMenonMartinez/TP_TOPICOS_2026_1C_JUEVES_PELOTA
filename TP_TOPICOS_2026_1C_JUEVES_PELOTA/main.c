@@ -10,6 +10,7 @@
 
 #include "caracteres.h"
 #include "puntaje.h"
+#include "pantalla_inicio.h"
 
 #define CANT_NIVELES 15
 
@@ -49,12 +50,16 @@ int main(int argc, char* argv[])
 
     srand(time(0));
 
-    uint8_t corriendo = 1;
+    //Muestra la pantalla de inicio. Al salir, inicia el ciclo del juego.
+    uint8_t corriendo = mostrar_Pantalla_Inicio();
+
     uint8_t contador_Frames = 0;
     uint8_t nivel = 0;
     bool pieza_Nueva = 1;
    //Posicion de pieza
     pieza_Pos pieza_Posicion;
+
+    //uint8_t inicio = mostrar_Pantalla_Inicio();
 
     while(corriendo){
 
@@ -76,6 +81,7 @@ int main(int argc, char* argv[])
         //Salir de la ejecucion
         if (tecla == GBTK_ESCAPE){
             corriendo = 0;
+
             printf("Saliendo del ejemplo\n");
         }
 
@@ -103,8 +109,6 @@ int main(int argc, char* argv[])
         gbt_borrar_backbuffer(AUX);
 
         //Hacer giladas
-
-        dibujar_Caracter_F1(fuente_Primera[c_Z],VENTANA_ANCHO-12,0,1,7,2,9);
 
         //Giro de la pieza
         pieza_Girar(&pieza_Posicion, &tecla);

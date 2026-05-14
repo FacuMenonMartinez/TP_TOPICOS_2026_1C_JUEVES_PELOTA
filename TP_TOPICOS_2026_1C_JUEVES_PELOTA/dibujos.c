@@ -7,6 +7,7 @@
 #include "GBT/gbt.h"
 #include "piezas.h"
 #include "recursos.h"
+#include "caracteres.h"
 
 void calcular_Posicion(uint8_t grilla_X,uint8_t grilla_Y, uint16_t  *coord_X, uint16_t  *coord_Y){
     //Calcular coordenada X
@@ -51,6 +52,14 @@ void dibujar_Pieza(e_Piezas pieza, pieza_Pos posicion, uint8_t color_Centro,uint
         }
     }
 }
+
+//Funcion que dibuja los caracteres en forma de palabra
+void dibujar_Palabra_F1(uint8_t palabra[], uint8_t tam, uint16_t pos_X, uint16_t pos_Y, uint8_t escala, uint8_t luz, uint8_t sombra, uint8_t base){
+            for(uint8_t i=0; i<tam; i++){
+                dibujar_Caracter_F1(palabra[i], pos_X + i*12 ,+ pos_Y,escala,sombra, luz, base);
+            }
+}
+
 
 
 

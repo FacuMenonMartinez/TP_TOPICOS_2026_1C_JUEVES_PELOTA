@@ -309,10 +309,10 @@ const uint8_t fuente_Primera[CANTIDAD_CARACTERES][FUENTE_PRIMERA_ALTO][FUENTE_PR
         {0,1,1,3,3,3,3,3,3,1,1,0},
         {0,0,1,1,1,1,1,1,1,1,0,0}
     },
-    {
+{
         //C_H
         {0,1,1,1,1,0,0,1,1,1,1,0},
-        {0,1,2,3,1,0,0,1,3,3,1,0},
+        {0,1,2,2,1,0,0,1,2,2,1,0},
         {0,1,2,3,1,0,0,1,3,3,1,0},
         {0,1,2,3,1,0,0,1,3,3,1,0},
         {0,1,2,3,1,0,0,1,3,3,1,0},
@@ -366,7 +366,7 @@ const uint8_t fuente_Primera[CANTIDAD_CARACTERES][FUENTE_PRIMERA_ALTO][FUENTE_PR
     {
         //C_K
         {0,1,1,1,1,0,0,1,1,1,1,0},
-        {0,1,2,3,1,0,0,1,3,3,1,0},
+        {0,1,2,2,1,0,0,1,2,2,1,0},
         {0,1,2,3,1,0,0,1,3,3,1,0},
         {0,1,2,3,1,0,0,1,3,3,1,0},
         {0,1,2,3,1,0,1,1,3,3,1,0},
@@ -384,7 +384,7 @@ const uint8_t fuente_Primera[CANTIDAD_CARACTERES][FUENTE_PRIMERA_ALTO][FUENTE_PR
     {
         //C_L
         {0,1,1,1,1,1,1,0,0,0,0,0},
-        {0,1,1,2,3,1,1,0,0,0,0,0},
+        {0,1,1,2,2,1,1,0,0,0,0,0},
         {0,0,1,2,3,1,0,0,0,0,0,0},
         {0,0,1,2,3,1,0,0,0,0,0,0},
         {0,0,1,2,3,1,0,0,0,0,0,0},
@@ -402,7 +402,7 @@ const uint8_t fuente_Primera[CANTIDAD_CARACTERES][FUENTE_PRIMERA_ALTO][FUENTE_PR
     {
         //C_M
         {0,1,1,1,1,0,0,1,1,1,1,0},
-        {0,1,2,3,1,1,1,1,3,3,1,0},
+        {0,1,2,2,1,1,1,1,2,2,1,0},
         {0,1,2,3,3,1,1,3,3,3,1,0},
         {0,1,2,3,3,3,3,3,3,3,1,0},
         {0,1,2,3,3,3,3,3,3,3,1,0},
@@ -420,7 +420,7 @@ const uint8_t fuente_Primera[CANTIDAD_CARACTERES][FUENTE_PRIMERA_ALTO][FUENTE_PR
     {
         //C_N
         {0,1,1,1,1,0,0,1,1,1,1,0},
-        {0,1,2,2,1,0,0,1,3,3,1,0},
+        {0,1,2,2,1,0,0,1,2,2,1,0},
         {0,1,2,3,1,0,0,1,3,3,1,0},
         {0,1,2,3,1,0,0,1,3,3,1,0},
         {0,1,2,3,3,1,0,1,3,3,1,0},
@@ -651,6 +651,25 @@ const uint8_t fuente_Primera[CANTIDAD_CARACTERES][FUENTE_PRIMERA_ALTO][FUENTE_PR
         {0,1,2,3,3,3,3,3,3,3,1,0},
         {0,1,1,1,1,1,1,1,1,1,1,0}
     },
+        //c_ES
+    {   {0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0}
+
+    }
+
 
 };
 const bool fuente_Segunda[CANTIDAD_CARACTERES][FUENTE_SEGUNDA_ALTO][FUENTE_SEGUNDA_ANCHO]=
@@ -970,7 +989,7 @@ uint8_t unidad_Minima_F2[4][4]=
     {2,3,4,5}
 };
 
-void dibujar_Caracter_F1(uint8_t caracter[][FUENTE_PRIMERA_ANCHO],uint16_t eje_X, uint16_t eje_Y, uint8_t escala, uint8_t sombra, uint8_t luz, uint8_t base)
+void dibujar_Caracter_F1(e_Caracter caracter ,uint16_t eje_X, uint16_t eje_Y, uint8_t escala, uint8_t sombra, uint8_t luz, uint8_t base)
 {
 
 
@@ -986,12 +1005,12 @@ void dibujar_Caracter_F1(uint8_t caracter[][FUENTE_PRIMERA_ANCHO],uint16_t eje_X
                 //generan una escala, dibujando el mismo lugar de la matriz
                 for (uint8_t dx=0; dx< escala; dx++) //más veces
                 {
-                    if(caracter[i][j]== 1)
+                    if(fuente_Primera[caracter][i][j]== 1)
                         gbt_dibujar_pixel(eje_X + j*escala + dx, eje_Y + i*escala + dy, sombra);
 
-                    if (caracter[i][j]==2)
+                    if (fuente_Primera[caracter][i][j]==2)
                         gbt_dibujar_pixel(eje_X + j*escala + dx, eje_Y + i*escala + dy, luz);
-                    if(caracter[i][j]==3)
+                    if(fuente_Primera[caracter][i][j]==3)
                         gbt_dibujar_pixel(eje_X + j*escala + dx, eje_Y + i*escala + dy, base);
 
                 }
@@ -1001,3 +1020,5 @@ void dibujar_Caracter_F1(uint8_t caracter[][FUENTE_PRIMERA_ANCHO],uint16_t eje_X
     }
 
 }
+
+
