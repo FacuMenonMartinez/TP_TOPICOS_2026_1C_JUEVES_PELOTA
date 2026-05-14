@@ -1,6 +1,6 @@
 #include "paletas.h"
 
-const tGBT_ColorRGB paleta_Vivos[CANT_COLORES] = {
+tGBT_ColorRGB paleta_Vivos[CANT_COLORES] = {
     //Colores Vivos
     {0x00, 0xF0, 0xF0}, // 0:  Cyan
     {0x50, 0xFF, 0xFF}, // 1:  Cyan claro
@@ -20,7 +20,7 @@ const tGBT_ColorRGB paleta_Vivos[CANT_COLORES] = {
     {0xFF, 0xFF, 0xFF}, // 15  TRANSPARENTE
 };
 
-const tGBT_ColorRGB paleta_Nocturnos[CANT_COLORES] = {
+tGBT_ColorRGB paleta_Nocturnos[CANT_COLORES] = {
     //Colores nocturnos
     {0x00, 0x5A, 0x6E}, // 0:  Cyan oscuro
     {0x00, 0x8C, 0xA0}, // 1:  Cyan oscuro claro
@@ -40,7 +40,7 @@ const tGBT_ColorRGB paleta_Nocturnos[CANT_COLORES] = {
     {0xFF, 0xFF, 0xFF}, // 15: TRANSPARENTE
 };
 
-const tGBT_ColorRGB paleta_Metalicos[CANT_COLORES] = {
+tGBT_ColorRGB paleta_Metalicos[CANT_COLORES] = {
     //Colores Metalicos
     {0x00, 0xB4, 0xC3}, // 0:   Cyan metal
     {0xA0, 0xF0, 0xF5}, // 1:   Cyan metal claro
@@ -60,7 +60,7 @@ const tGBT_ColorRGB paleta_Metalicos[CANT_COLORES] = {
     {0xFF, 0xFF, 0xFF}, // 15:  Transparente
 };
 
-const tGBT_ColorRGB* paletas[CANT_PALETAS] = {
+tGBT_ColorRGB* paletas[CANT_PALETAS] = {
     paleta_Vivos,
     paleta_Nocturnos,
     paleta_Metalicos

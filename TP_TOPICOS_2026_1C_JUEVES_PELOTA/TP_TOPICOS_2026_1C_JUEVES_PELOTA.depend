@@ -65,7 +65,7 @@
 
 1777892516 source:e:\unlam\segundo año\topicos de programacion\_proyectos\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\trash.c
 
-1778119894 source:c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\dibujos.c
+1778767779 source:c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\dibujos.c
 	<stdio.h>
 	<stdlib.h>
 	<stdint.h>
@@ -74,13 +74,16 @@
 	"GBT/gbt.h"
 	"piezas.h"
 	"recursos.h"
+	"caracteres.h"
 
-1778178483 c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\dibujos.h
+1778761808 c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\dibujos.h
 	"piezas.h"
 
-1778119894 c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\piezas.h
+1778760944 c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\piezas.h
+	<stdio.h>
 	<stdbool.h>
 	<stdint.h>
+	"GBT/gbt.h"
 
 1778119894 c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\lib\gbt_v2026.1c.01\include\gbt\gbt.h
 	"gbt_entrada.h"
@@ -104,10 +107,10 @@
 	<stdlib.h>
 	<stdint.h>
 
-1778119894 c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\recursos.h
+1778763863 c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\recursos.h
 	"dibujos.h"
 
-1778465739 source:c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\main.c
+1778764525 source:c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\main.c
 	<stdio.h>
 	<stdlib.h>
 	<stdint.h>
@@ -118,32 +121,34 @@
 	"recursos.h"
 	"caracteres.h"
 	"puntaje.h"
-	"tablero.h"
+	"pantalla_inicio.h"
 
-1778178483 c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\paletas.h
+1778767989 c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\paletas.h
 	"GBT/gbt.h"
 
-1778119894 source:c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\paletas.c
+1778767989 source:c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\paletas.c
 	"paletas.h"
 
-1778119894 source:c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\piezas.c
+1778760944 source:c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\piezas.c
 	"piezas.h"
+	"recursos.h"
 
-1778119894 source:c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\recursos.c
+1778760944 source:c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\recursos.c
+	"piezas.h"
 	"recursos.h"
 
 1778119894 source:c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\trash.c
 
-1778465994 source:c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\caracteres.c
+1778767796 source:c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\caracteres.c
 	"caracteres.h"
 
-1778178365 c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\caracteres.h
+1778767778 c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\caracteres.h
 	<stdbool.h>
 	<stdio.h>
 	<stdint.h>
 	"GBT/gbt.h"
 
-1778178365 source:c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\puntaje.c
+1778767778 source:c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\puntaje.c
 	"puntaje.h"
 	"caracteres.h"
 
@@ -253,4 +258,15 @@
 	"GBT/gbt.h"
 
 1778546999 source:c:\ap\proyectos codeblocks\_repo\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\trash.c
+
+1778767858 source:c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\pantalla_inicio.c
+	"pantalla_inicio.h"
+
+1778762668 c:\users\facu\desktop\topicos tp\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\pantalla_inicio.h
+	<stdio.h>
+	<stdint.h>
+	"GBT/gbt.h"
+	"recursos.h"
+	"dibujos.h"
+	"caracteres.h"
 

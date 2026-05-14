@@ -26,7 +26,7 @@
 //#define Mc 16 //Mino contorno
 //#define Mb 17 //Mino base
 
-extern const tGBT_ColorRGB paleta_Vivos[CANT_COLORES], paleta_Nocturnos[CANT_COLORES], paleta_Metalicos[CANT_COLORES];
+extern tGBT_ColorRGB paleta_Vivos[CANT_COLORES], paleta_Nocturnos[CANT_COLORES], paleta_Metalicos[CANT_COLORES];
 
 //Lista de paletas
 typedef enum {
@@ -36,6 +36,6 @@ typedef enum {
 } tipo_Paleta;
 
 //Array de punteros a paletas
-extern const tGBT_ColorRGB* paletas[CANT_PALETAS];
+extern tGBT_ColorRGB* paletas[CANT_PALETAS];
 
 #endif // PALETAS_H_INCLUDED
