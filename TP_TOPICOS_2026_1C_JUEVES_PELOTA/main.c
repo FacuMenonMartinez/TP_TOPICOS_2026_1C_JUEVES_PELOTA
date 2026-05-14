@@ -11,6 +11,7 @@
 
 #include "caracteres.h"
 #include "puntaje.h"
+#include "pantalla_inicio.h"
 
 #define CANT_NIVELES 15
 
@@ -48,15 +49,16 @@ int main(int argc, char* argv[])
         return -1;
     }
 
+
     srand(time(NULL));
-    uint8_t corriendo = 1;
+    //Muestra la pantalla de inicio. Al salir, inicia el ciclo del juego.
+    uint8_t corriendo = mostrar_Pantalla_Inicio();
     uint8_t contador_Frames = 0;
     uint8_t nivel = 3;
     bool pieza_Nueva = 1;
     uint8_t pieza_indice = 0;
    //Posicion de pieza
     pieza_Pos pieza_Pos_Actual, pieza_Pos_Siguiente;
-
 
     while(corriendo){
         //Detectar algun evento de tecla
@@ -66,6 +68,7 @@ int main(int argc, char* argv[])
         //Salir de la ejecucion
         if (tecla == GBTK_ESCAPE){
             corriendo = 0;
+
             printf("Saliendo del ejemplo\n");
         }
 
@@ -203,7 +206,6 @@ int main(int argc, char* argv[])
         gbt_volcar_backbuffer();
         gbt_esperar(10);
     }
-
     gbt_temporizador_destruir(temporizador);
     gbt_destruir_ventana();
     gbt_cerrar();

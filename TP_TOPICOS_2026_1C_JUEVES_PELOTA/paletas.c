@@ -60,7 +60,8 @@ tGBT_ColorRGB paleta_Metalicos[CANT_COLORES] = {
     {0xFF, 0xFF, 0xFF}, // 15:  Transparente
 };
 
- tGBT_ColorRGB* paletas[CANT_PALETAS] = {
+
+tGBT_ColorRGB *paletas[CANT_PALETAS] = {
     paleta_Vivos,
     paleta_Nocturnos,
     paleta_Metalicos

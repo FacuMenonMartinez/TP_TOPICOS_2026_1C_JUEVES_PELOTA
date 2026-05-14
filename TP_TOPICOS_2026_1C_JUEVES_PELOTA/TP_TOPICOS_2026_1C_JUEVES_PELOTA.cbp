@@ -55,6 +55,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="paletas.h" />
+		<Unit filename="pantalla_inicio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pantalla_inicio.h" />
 		<Unit filename="piezas.c">
 			<Option compilerVar="CC" />
 		</Unit>

@@ -22,4 +22,12 @@ void dibujar_Pieza(e_Piezas pieza, pieza_Pos *posicion, uint8_t color_Centro,uin
 //Dibujar la grilla con las piezas que se encuentran fijas
 void dibujar_Grilla_Juego();
 
+
+//Funcion para dibujar texto
+    //Usa la fuente 1
+    //Recibe un vector que contiene los caracteres de la palabra y cantidad de elementos del mismo,
+    // coordenada en X, en Y, escala del caracter, color luz, sombra y base.
+void dibujar_Palabra_F1 (uint8_t [], uint8_t , uint16_t , uint16_t , uint8_t , uint8_t , uint8_t , uint8_t );
+
+
 #endif // DIBUJOS_H_INCLUDED
