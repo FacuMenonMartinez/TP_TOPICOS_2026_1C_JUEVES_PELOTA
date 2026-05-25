@@ -28,6 +28,7 @@ void dibujar_Grilla_Juego();
     //Recibe un vector que contiene los caracteres de la palabra y cantidad de elementos del mismo,
     // coordenada en X, en Y, escala del caracter, color luz, sombra y base.
 void dibujar_Palabra_F1 (uint8_t [], uint8_t , uint16_t , uint16_t , uint8_t , uint8_t , uint8_t , uint8_t );
+void dibujar_Palabra_F2(uint8_t[], uint8_t, uint16_t, uint16_t, uint8_t, uint8_t);
 
 
 #endif // DIBUJOS_H_INCLUDED

@@ -7,6 +7,7 @@
 #include "dibujos.h"
 #include "caracteres.h"
 #include "movimiento.h"
+#include "jugador.h"
 
 #define ALTO_LOGO 30
 #define ANCHO_LOGO 75
