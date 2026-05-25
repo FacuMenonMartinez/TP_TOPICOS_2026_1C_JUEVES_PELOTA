@@ -8,8 +8,8 @@
 
 #define FUENTE_PRIMERA_ANCHO 12
 #define FUENTE_PRIMERA_ALTO 15
-#define FUENTE_SEGUNDA_ANCHO 10
-#define FUENTE_SEGUNDA_ALTO 8
+#define FUENTE_SEGUNDA_ANCHO 6
+#define FUENTE_SEGUNDA_ALTO 6
 #define CANTIDAD_CARACTERES 37
 
 typedef enum
@@ -55,10 +55,11 @@ typedef enum
 } e_Caracter;
 
 extern const uint8_t fuente_Primera[CANTIDAD_CARACTERES][FUENTE_PRIMERA_ALTO][FUENTE_PRIMERA_ANCHO];
-extern const bool fuente_Segunda[CANTIDAD_CARACTERES][FUENTE_SEGUNDA_ALTO][FUENTE_SEGUNDA_ANCHO];
+extern const uint8_t fuente_Segunda[CANTIDAD_CARACTERES][FUENTE_SEGUNDA_ALTO][FUENTE_SEGUNDA_ANCHO];
 
 extern bool unidad_Minima_F1[2][2];
 extern uint8_t unidad_Minima_F2[4][4];
 
 void dibujar_Caracter_F1(e_Caracter caracter ,uint16_t eje_X, uint16_t eje_Y, uint8_t escala, uint8_t sombra, uint8_t luz, uint8_t base);
+void dibujar_Caracter_F2(e_Caracter caracter ,uint16_t eje_X, uint16_t eje_Y, uint8_t escala, uint8_t color);
 #endif // CARACTERES_H_INCLUDED

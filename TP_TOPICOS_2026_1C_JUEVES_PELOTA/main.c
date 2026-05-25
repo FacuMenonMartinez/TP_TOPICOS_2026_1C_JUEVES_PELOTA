@@ -12,6 +12,7 @@
 #include "caracteres.h"
 #include "puntaje.h"
 #include "pantalla_inicio.h"
+#include "jugador.h"
 
 #define CANT_NIVELES 15
 
@@ -20,6 +21,7 @@ const uint8_t tabla_Niveles[CANT_NIVELES] = {48, 43, 38, 33, 28, 23, 18, 13, 8, 
 int main(int argc, char* argv[])
 {
     uint8_t paleta_Activa = PALETA_VIVOS;
+    t_Jugador jug;
 
     //Iniciar biblioteca
     if(gbt_iniciar() !=0 ){
@@ -52,15 +54,35 @@ int main(int argc, char* argv[])
 
     srand(time(NULL));
     //Muestra la pantalla de inicio. Al salir, inicia el ciclo del juego.
-    uint8_t corriendo = mostrar_Pantalla_Inicio();
+    uint8_t corriendo= mostrar_Pantalla_Inicio();
+    uint16_t puntaje = 0;
+    uint8_t crear_jugador= mostrar_Pantalla_Crear_Jugador(&jug);
     uint8_t contador_Frames = 0;
     uint8_t nivel = 3;
     bool pieza_Nueva = 1;
     uint8_t pieza_indice = 0;
+
+
+   if(crear_jugador)
+        corriendo=1;
+    else
+        corriendo=0;
+
+
+
    //Posicion de pieza
-    pieza_Pos pieza_Pos_Actual, pieza_Pos_Siguiente;
+    pieza_Pos pieza_Pos_Actual, pieza_Pos_Siguiente, pieza_Pos_Prediccion;
+
+    pieza_Pos_Prediccion.Rot=1;
+    pieza_Pos_Prediccion.X=0;
+    pieza_Pos_Prediccion.Y=0;
+
+
+
+    //corriendo=mostrar_Pantalla_Jugador(&jug);
 
     while(corriendo){
+
         //Detectar algun evento de tecla
         gbt_procesar_entrada();
         eGBT_Tecla tecla = gbt_obtener_tecla_presionada();
@@ -189,6 +211,8 @@ int main(int argc, char* argv[])
             printf("\n\n");
 
             pieza_Nueva = 1;
+
+           puntaje = calcular_Puntaje(puntaje,1,0,nivel);
         }
 
         //Eliminar filas completadas
@@ -197,7 +221,7 @@ int main(int argc, char* argv[])
         gbt_borrar_backbuffer(AUX);
 
         //Hacer giladas
-        dibujar_Caracter_F1(c_Z,VENTANA_ANCHO-12,0,1,7,2,9);
+        mostrar_Puntaje(puntaje, VENTANA_ANCHO/10,VENTANA_ALTO/8);
 
         //Dibujar la pieza en la pos que le corresponda
         dibujar_Pieza(pieza_indice, &pieza_Pos_Actual,Sc, Sb);

@@ -34,7 +34,8 @@ uint8_t logo_Inicio [ALTO_LOGO][ANCHO_LOGO]={
     };
 
     uint8_t palabra_Logo [26] ={c_S,c_I,c_S,c_T,c_E,c_M,c_A,c_ES,c_D,c_E,c_ES,c_E,c_N,c_T,c_R,c_E,c_T,c_E,c_N,c_I,c_M,c_I,c_E,c_N,c_T,c_O};
-    uint8_t inicio_Mensaje[]= {c_P,c_R,c_E,c_S,c_I,c_O,c_N,c_A,c_ES,c_E,c_N,c_T,c_E,c_R};
+    uint8_t inicio_Mensaje[14]= {c_P,c_R,c_E,c_S,c_I,c_O,c_N,c_A,c_ES,c_E,c_N,c_T,c_E,c_R};
+
 
 
 uint8_t mostrar_Pantalla_Inicio (){
@@ -44,6 +45,7 @@ uint8_t mostrar_Pantalla_Inicio (){
 
         gbt_procesar_entrada();
         eGBT_Tecla tecla = gbt_obtener_tecla_presionada();
+
         if(tecla == GBTK_ENTER)
             mostrar_Pantalla=0;
 
@@ -51,7 +53,8 @@ uint8_t mostrar_Pantalla_Inicio (){
 
         dibujar_Logo(logo_Inicio,(VENTANA_ANCHO/2)-(ANCHO_LOGO),(VENTANA_ALTO/2)-ALTO_LOGO*2);
 
-        dibujar_Palabra_F1(palabra_Logo,26,(VENTANA_ANCHO/VENTANA_ANCHO)*6,(VENTANA_ALTO/2)+ 15/2 ,1,0,2,3);
+        //dibujar_Palabra_F1(palabra_Logo,26,(VENTANA_ANCHO/VENTANA_ANCHO)*6,(VENTANA_ALTO/2)+ 15/2 ,1,0,2,3);
+        dibujar_Palabra_F2(palabra_Logo,26,(VENTANA_ANCHO/2)-(7*26)/2,(VENTANA_ALTO/2)+ 15/2 ,1,0);
         dibujar_Palabra_F1(inicio_Mensaje,14,(VENTANA_ANCHO/2)-(12*14)/2,(VENTANA_ALTO/2)+ 15*3,1,0,2,3);
 
 
@@ -78,3 +81,5 @@ void dibujar_Logo (uint8_t matriz[ALTO_LOGO][ANCHO_LOGO],uint16_t ejeX, uint16_t
             }
         }
 }
+
+
