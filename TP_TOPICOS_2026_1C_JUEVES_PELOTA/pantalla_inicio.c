@@ -34,10 +34,10 @@ uint8_t logo_Inicio [ALTO_LOGO][ANCHO_LOGO]={
     };
 
     uint8_t palabra_Logo [26] ={c_S,c_I,c_S,c_T,c_E,c_M,c_A,c_ES,c_D,c_E,c_ES,c_E,c_N,c_T,c_R,c_E,c_T,c_E,c_N,c_I,c_M,c_I,c_E,c_N,c_T,c_O};
-    uint8_t inicio_Mensaje[]= {c_P,c_R,c_E,c_S,c_I,c_O,c_N,c_A,c_ES,c_E,c_N,c_T,c_E,c_R};
-
+    uint8_t inicio_Mensaje[14]= {c_P,c_R,c_E,c_S,c_I,c_O,c_N,c_A,c_ES,c_E,c_N,c_T,c_E,c_R};
 
 uint8_t mostrar_Pantalla_Inicio (){
+
     uint8_t mostrar_Pantalla = 1;
 
     while(mostrar_Pantalla==1){
