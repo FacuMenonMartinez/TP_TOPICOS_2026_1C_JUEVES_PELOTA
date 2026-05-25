@@ -61,7 +61,4 @@ extern bool unidad_Minima_F1[2][2];
 extern uint8_t unidad_Minima_F2[4][4];
 
 void dibujar_Caracter_F1(e_Caracter caracter ,uint16_t eje_X, uint16_t eje_Y, uint8_t escala, uint8_t sombra, uint8_t luz, uint8_t base);
-
-
-
 #endif // CARACTERES_H_INCLUDED

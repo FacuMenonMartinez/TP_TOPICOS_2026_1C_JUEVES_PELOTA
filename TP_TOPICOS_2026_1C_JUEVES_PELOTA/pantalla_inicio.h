@@ -4,9 +4,9 @@
 #include <stdint.h>
 
 #include "GBT/gbt.h"
-#include "recursos.h"
 #include "dibujos.h"
 #include "caracteres.h"
+#include "movimiento.h"
 
 #define ALTO_LOGO 30
 #define ANCHO_LOGO 75
