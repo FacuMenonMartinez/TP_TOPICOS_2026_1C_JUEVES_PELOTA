@@ -38,4 +38,14 @@ typedef enum {
 //Array de punteros a paletas
 extern tGBT_ColorRGB* paletas[CANT_PALETAS];
 
+/** \brief
+ *  Recibe 3 teclas que se utilizaran para cambiar de paleta
+ * \param Tecla para seleccionar paleta 1
+ * \param Tecla para seleccionar paleta 2
+ * \param Tecla para seleccionar paleta 3
+ */
+
+void paletas_Cambio(eGBT_Tecla tecla_Pal_1, eGBT_Tecla tecla_Pal_2, eGBT_Tecla tecla_Pal_3, eGBT_Tecla *tecla);
+
+
 #endif // PALETAS_H_INCLUDED

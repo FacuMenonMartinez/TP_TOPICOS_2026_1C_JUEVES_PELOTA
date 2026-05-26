@@ -22,6 +22,13 @@ void dibujar_Pieza(e_Piezas pieza, pieza_Pos *posicion, uint8_t color_Centro,uin
 //Dibujar la grilla con las piezas que se encuentran fijas
 void dibujar_Grilla_Juego();
 
+/** \brief
+ *  Verifica que fila esta completada
+ * \return -1 si no hay filas completas, sino devuelve el nro de fila completa
+ */
+int verificar_Filas();
+
+void eliminar_Fila(int fila_Eliminar);
 
 //Funcion para dibujar texto
     //Usa la fuente 1

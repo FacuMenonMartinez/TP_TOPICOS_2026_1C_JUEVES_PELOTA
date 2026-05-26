@@ -52,6 +52,29 @@ void dibujar_Grilla_Juego(){
     }
 }
 
+int verificar_Filas(){
+    uint64_t cont;
+    for(uint8_t y = 0; y<GRILLA_FIL; y++){
+        cont = 0;
+        for(uint8_t x = 0; x<GRILLA_COL; x++){
+            if(grilla_Juego[y][x]){
+                cont++;
+            }
+
+        }
+        if (cont == GRILLA_COL){
+            return y; //Fila a eliminar
+        }
+    }
+    return -1;
+}
+
+void eliminar_Fila(int fila_Eliminar){
+    for(int x = 0; x< GRILLA_COL; x++){
+        grilla_Juego[fila_Eliminar][x] = 0;
+    }
+}
+
 //Funcion que dibuja los caracteres en forma de palabra
 void dibujar_Palabra_F1(uint8_t palabra[], uint8_t tam, uint16_t pos_X, uint16_t pos_Y, uint8_t escala, uint8_t luz, uint8_t sombra, uint8_t base){
             for(uint8_t i=0; i<tam; i++){

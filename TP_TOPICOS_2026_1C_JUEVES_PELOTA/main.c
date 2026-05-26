@@ -20,9 +20,6 @@ const uint8_t tabla_Niveles[CANT_NIVELES] = {48, 43, 38, 33, 28, 23, 18, 13, 8, 
 
 int main(int argc, char* argv[])
 {
-    uint8_t paleta_Activa = PALETA_VIVOS;
-    t_Jugador jug;
-
     //Iniciar biblioteca
     if(gbt_iniciar() !=0 ){
         fprintf(stderr, "Error al iniciar biblioteca: %s\n", gbt_obtener_log());
@@ -40,7 +37,7 @@ int main(int argc, char* argv[])
     }
 
     //Aplicar paleta de colores
-    if (gbt_aplicar_paleta(paletas[paleta_Activa], CANT_COLORES, GBT_FORMATO_888) != 0) {
+    if (gbt_aplicar_paleta(paletas[0], CANT_COLORES, GBT_FORMATO_888) != 0) {
         fprintf(stderr, "Error al aplicar la nueva paleta de colores: %s\n", gbt_obtener_log());
         return -1;
     }
@@ -53,39 +50,29 @@ int main(int argc, char* argv[])
 
 
     srand(time(NULL));
-    //Muestra la pantalla de inicio. Al salir, inicia el ciclo del juego.
+
+    t_Jugador jug;
     uint8_t corriendo= mostrar_Pantalla_Inicio();
     uint16_t puntaje = 0;
     uint8_t crear_jugador= mostrar_Pantalla_Crear_Jugador(&jug);
     uint8_t contador_Frames = 0;
-    uint8_t nivel = 3;
+    uint8_t nivel = 0;
     bool pieza_Nueva = 1;
     uint8_t pieza_indice = 0;
-
+    pieza_Pos pieza_Pos_Actual, pieza_Pos_Siguiente;
+    uint8_t bajar_Rapido;
+    uint8_t nivel_Bajar_Rapido = 10;
 
    if(crear_jugador)
         corriendo=1;
     else
         corriendo=0;
 
-
-
-   //Posicion de pieza
-    pieza_Pos pieza_Pos_Actual, pieza_Pos_Siguiente, pieza_Pos_Prediccion;
-
-    pieza_Pos_Prediccion.Rot=1;
-    pieza_Pos_Prediccion.X=0;
-    pieza_Pos_Prediccion.Y=0;
-
-
-
-    //corriendo=mostrar_Pantalla_Jugador(&jug);
-
     while(corriendo){
-
         //Detectar algun evento de tecla
         gbt_procesar_entrada();
         eGBT_Tecla tecla = gbt_obtener_tecla_presionada();
+        bajar_Rapido = gbt_tecla_sostenida(GBTK_ABAJO);
 
         //Salir de la ejecucion
         if (tecla == GBTK_ESCAPE){
@@ -94,25 +81,8 @@ int main(int argc, char* argv[])
             printf("Saliendo del ejemplo\n");
         }
 
-        //Giladas con la paleta de colores
-        switch (tecla){
-            case GBTK_u:
-                paleta_Activa = PALETA_VIVOS;
-                break;
-            case GBTK_i:
-                paleta_Activa = PALETA_NOCTURNOS;
-                break;
-            case GBTK_o:
-                paleta_Activa = PALETA_METALICOS;
-                break;
-            default:
-                break;
-        }
-        //Aplicar nueva paleta
-        if (gbt_aplicar_paleta(paletas[paleta_Activa], CANT_COLORES, GBT_FORMATO_888) != 0) {
-            fprintf(stderr, "Error al aplicar la nueva paleta de colores: %s\n", gbt_obtener_log());
-            return -1;
-        }
+        //Cambio de paletas
+        paletas_Cambio(GBTK_u, GBTK_i, GBTK_o, &tecla);
 
         //Dibujar pieza en coordenada de inicio
         if (pieza_Nueva){
@@ -122,11 +92,6 @@ int main(int argc, char* argv[])
             pieza_Pos_Actual.Rot =    e_Pieza_0;      //Generar pieza aleatoria
             dibujar_Pieza(pieza_indice, &pieza_Pos_Actual,Sc, Sb);
             pieza_Nueva = 0;
-        }
-
-        //Contador de frames em funcion del temporizador
-        if (gbt_temporizador_consumir(temporizador)){
-            contador_Frames++;
         }
 
         //modificadores de velocidad
@@ -181,11 +146,17 @@ int main(int argc, char* argv[])
             pieza_Pos_Actual = pieza_Pos_Siguiente;
         }
 
-        //----- Caida gravedad -----
+        //----- Caida gravedad / Bajar rapido -----
 
         pieza_Pos_Siguiente = pieza_Pos_Actual;
         bool bajar= false;
-        if (contador_Frames >= tabla_Niveles[nivel]) {
+        if(bajar_Rapido != 0){
+            if(contador_Frames >= tabla_Niveles[nivel_Bajar_Rapido]){
+                contador_Frames = 0;
+                movimiento_Grav(&pieza_Pos_Siguiente);
+                bajar = true;
+            }
+        }else if(contador_Frames >= tabla_Niveles[nivel]) {
             contador_Frames = 0;
             movimiento_Grav(&pieza_Pos_Siguiente);
             bajar = true;
@@ -198,42 +169,45 @@ int main(int argc, char* argv[])
         else if(bajar) //Si tengo que bajar y no puedo >> bloquear la pieza
         {
             printf("coord x: %d coord y: %d\n", pieza_Pos_Actual.X, pieza_Pos_Actual.Y);
-            actualizar_Grilla(pieza_indice, &pieza_Pos_Actual);
-
-            //Verificar si se esta actualizando la grilla
-            printf("\nGRILLA: \n");
-            for(int i = 0; i <GRILLA_FIL; i++){
-                for(int j = 0; j<GRILLA_COL; j++){
-                    printf(" %d ", grilla_Juego[i][j]);
-                }
-                printf("\n");
-            }
-            printf("\n\n");
-
+            fijar_Pieza(pieza_indice, &pieza_Pos_Actual);
             pieza_Nueva = 1;
-
-           puntaje = calcular_Puntaje(puntaje,1,0,nivel);
+            puntaje = calcular_Puntaje(puntaje,1,0,nivel);
         }
 
         //Eliminar filas completadas
+        if (pieza_Nueva == 1){
+            int fila_Eliminar;
+            //Mientras haya alguna fila para eliminar
+            while((fila_Eliminar = verificar_Filas()) != -1){
+                //Eliminar fila completada
+                eliminar_Fila(fila_Eliminar);
+                //Bajar una posicion todos los minos por encima de la fila eliminada
 
+                //Contador de cuantas filas se eliminaron
+            }
+        }
         //Llenar el backbuffer con un color
         gbt_borrar_backbuffer(AUX);
 
-        //Hacer giladas
+        //Mostrar puntaje
         mostrar_Puntaje(puntaje, VENTANA_ANCHO/10,VENTANA_ALTO/8);
 
         //Dibujar la pieza en la pos que le corresponda
         dibujar_Pieza(pieza_indice, &pieza_Pos_Actual,Sc, Sb);
         dibujar_Grilla_Juego();
-        //Volcar pixeles dibujados en el backbuffer a la ventana
-        gbt_volcar_backbuffer();
+
+        //Contador de frames em funcion del temporizador
+        if (gbt_temporizador_consumir(temporizador)){
+            contador_Frames++;
+            //Volcar pixeles dibujados en el backbuffer a la ventana
+            gbt_volcar_backbuffer();
+        }
+
         gbt_esperar(10);
     }
     gbt_temporizador_destruir(temporizador);
     gbt_destruir_ventana();
     gbt_cerrar();
+
     return 0;
 }
-
-

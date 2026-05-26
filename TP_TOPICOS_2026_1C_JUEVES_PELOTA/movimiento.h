@@ -41,6 +41,6 @@ void movimiento_Giro_AH(pieza_Pos *pieza_Pos);
 
 void movimiento_Grav(pieza_Pos *pieza_Pos);
 
-void actualizar_Grilla(e_Piezas epieza, pieza_Pos *pieza_Pos);
+void fijar_Pieza(e_Piezas epieza, pieza_Pos *pieza_Pos);
 
 #endif // MOVIMIENTO_H_INCLUDED
