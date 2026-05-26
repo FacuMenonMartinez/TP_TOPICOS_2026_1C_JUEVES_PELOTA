@@ -8,8 +8,8 @@
 
 #define MINO_LADO   4 //Unidad Px
 #define MINO_BORDE  2 //Unidad Px
-//#define FONDO_LADO 2
-//#define FONDO_BORDE 1
+#define FONDO_LADO 2
+#define FONDO_BORDE 1
 #define PIEZA_LADO  4 //Unidad Mino
 #define ROTACIONES  4
 #define CANT_PIEZAS 7

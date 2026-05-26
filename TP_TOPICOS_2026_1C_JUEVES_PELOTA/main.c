@@ -218,7 +218,7 @@ int main(int argc, char* argv[])
 
         //Mostrar puntaje
         mostrar_Puntaje(puntaje, VENTANA_ANCHO/10,VENTANA_ALTO/8);
-       dibujar_Grilla_Juego();
+        dibujar_Grilla_Juego();
         //Dibujar la pieza en la pos que le corresponda
         dibujar_Pieza(pieza_indice, &pieza_Pos_Actual,Sc, Sb);
 
