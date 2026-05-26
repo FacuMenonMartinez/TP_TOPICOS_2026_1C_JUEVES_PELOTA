@@ -31,6 +31,19 @@ void dibujar_mino(uint16_t coord_X, uint16_t coord_Y, uint8_t color_Centro, uint
     }
 }
 
+void dibujar_fondo(uint16_t coord_X, uint16_t coord_Y, uint8_t color_Centro){
+
+    uint16_t oX = 1 ,oY = 1;
+    //Calcular posicion en pixeles de donde se va a dibujar
+    calcular_Posicion(coord_X, coord_Y, &oX, &oY);
+
+    for(uint16_t y = 0; y < FONDO_LADO; y++){
+        for(uint16_t x = 0; x < FONDO_LADO; x++){
+             gbt_dibujar_pixel(oX+x+1,oY+y+1,color_Centro);
+        }
+    }
+}
+
 void dibujar_Pieza(e_Piezas pieza, pieza_Pos *posicion, uint8_t color_Centro,uint8_t color_Borde){
     for(uint16_t i = 0; i<PIEZA_LADO; i++){
         for(uint16_t j = 0; j<PIEZA_LADO; j++){
@@ -48,7 +61,39 @@ void dibujar_Grilla_Juego(){
                 //que hago con los colores?
                 dibujar_mino(x, y, 7, 4);
             }
+             else{
+                dibujar_fondo(x,y,5);
+            }
         }
+    }
+}
+
+int verificar_Filas(){
+    uint64_t cont;
+    for(uint8_t y = 0; y<GRILLA_FIL; y++){
+        cont = 0;
+        for(uint8_t x = 0; x<GRILLA_COL; x++){
+            if(grilla_Juego[y][x]){
+                cont++;
+            }
+
+        }
+        if (cont == GRILLA_COL){
+            return y; //Fila a eliminar
+        }
+    }
+    return -1;
+}
+
+void eliminar_Fila(int fila_Eliminar){
+    for(int y = fila_Eliminar; y > 0; y--){
+        for(uint8_t x = 0; x < GRILLA_COL; x++){
+            grilla_Juego[y][x] = grilla_Juego[y-1][x];
+        }
+    }
+    // limpiar la fila superior
+    for(uint8_t x = 0; x < GRILLA_COL; x++){
+        grilla_Juego[0][x] = 0;
     }
 }
 

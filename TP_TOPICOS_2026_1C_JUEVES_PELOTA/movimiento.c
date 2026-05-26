@@ -66,7 +66,7 @@ void movimiento_Grav(pieza_Pos *pieza_Pos){
     pieza_Pos->Y++;
 }
 
-void actualizar_Grilla(e_Piezas epieza, pieza_Pos *pieza_Pos){
+void fijar_Pieza(e_Piezas epieza, pieza_Pos *pieza_Pos){
 
     for(uint8_t y = 0; y<PIEZA_LADO; y++){
         for(uint8_t x = 0; x<PIEZA_LADO; x++){

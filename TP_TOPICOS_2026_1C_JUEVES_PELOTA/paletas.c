@@ -1,5 +1,5 @@
 #include "paletas.h"
-
+#include <stdio.h>
 tGBT_ColorRGB paleta_Vivos[CANT_COLORES] = {
     //Colores Vivos
     {0x00, 0xF0, 0xF0}, // 0:  Cyan
@@ -67,3 +67,19 @@ tGBT_ColorRGB *paletas[CANT_PALETAS] = {
     paleta_Metalicos
 };
 
+uint8_t paleta_Activa;
+
+void paletas_Cambio(eGBT_Tecla tecla_Pal_1, eGBT_Tecla tecla_Pal_2, eGBT_Tecla tecla_Pal_3, eGBT_Tecla *tecla){
+
+        if(*tecla == tecla_Pal_1){
+            paleta_Activa = PALETA_VIVOS;
+        }
+        else if(*tecla == tecla_Pal_2){
+            paleta_Activa = PALETA_NOCTURNOS;
+        }
+        else if(*tecla == tecla_Pal_3){
+            paleta_Activa = PALETA_METALICOS;
+        }
+        //Aplicar paleta
+        if (gbt_aplicar_paleta(paletas[paleta_Activa], CANT_COLORES, GBT_FORMATO_888));
+}

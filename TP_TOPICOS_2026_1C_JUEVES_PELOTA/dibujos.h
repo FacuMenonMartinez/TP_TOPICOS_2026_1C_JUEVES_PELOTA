@@ -16,12 +16,21 @@ void calcular_Posicion(uint16_t grilla_X,uint16_t grilla_Y, uint16_t  *coord_X, 
 //Funcion para dibujar mino
 void dibujar_mino(uint16_t coord_X, uint16_t coord_Y, uint8_t color_Centro, uint8_t color_Borde);
 
+void dibujar_fondo(uint16_t coord_X, uint16_t coord_Y, uint8_t color_Centro);
+
 //Funcion para dibujar pieza
 void dibujar_Pieza(e_Piezas pieza, pieza_Pos *posicion, uint8_t color_Centro,uint8_t color_Borde);
 
 //Dibujar la grilla con las piezas que se encuentran fijas
 void dibujar_Grilla_Juego();
 
+/** \brief
+ *  Verifica que fila esta completada
+ * \return -1 si no hay filas completas, sino devuelve el nro de fila completa
+ */
+int verificar_Filas();
+
+void eliminar_Fila(int fila_Eliminar);
 
 //Funcion para dibujar texto
     //Usa la fuente 1
