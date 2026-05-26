@@ -8,6 +8,12 @@ const bool pieza_Mino[MINO_LADO][MINO_LADO] =
     {1,0,0,1},
     {1,1,1,1},
     };
+//
+//const bool pieza_Mino_Fondo[FONDO_LADO][FONDO_LADO] =
+//    {
+//    {1,1},
+//    {1,1},
+//    };
 
 const pieza_Grilla piezas[CANT_PIEZAS][ROTACIONES] = {
     //Pieza T:

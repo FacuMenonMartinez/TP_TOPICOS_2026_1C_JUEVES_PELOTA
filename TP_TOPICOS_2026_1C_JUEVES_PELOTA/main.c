@@ -13,6 +13,7 @@
 #include "puntaje.h"
 #include "pantalla_inicio.h"
 #include "jugador.h"
+#include "configuracion.h"
 
 #define CANT_NIVELES 15
 
@@ -52,9 +53,11 @@ int main(int argc, char* argv[])
     srand(time(NULL));
 
     t_Jugador jug;
+    t_Configuracion config;
     uint8_t corriendo= mostrar_Pantalla_Inicio();
     uint16_t puntaje = 0;
-    uint8_t crear_jugador= mostrar_Pantalla_Crear_Jugador(&jug);
+//    uint8_t crear_jugador= mostrar_Pantalla_Crear_Jugador(&jug);
+    uint8_t configuracion = mostrar_Pantalla_Configuracion(&config);
     uint8_t contador_Frames = 0;
     uint8_t nivel = 0;
     bool pieza_Nueva = 1;
@@ -62,11 +65,21 @@ int main(int argc, char* argv[])
     pieza_Pos pieza_Pos_Actual, pieza_Pos_Siguiente;
     uint8_t bajar_Rapido;
     uint8_t nivel_Bajar_Rapido = 10;
+    uint8_t fila=0;
+    printf("ESTOY ACA");
+//   if(crear_jugador)
+//        corriendo=1;
+//    else
+//        corriendo=0;
 
-   if(crear_jugador)
+   if(configuracion)
         corriendo=1;
     else
         corriendo=0;
+
+
+///    crearArchConfigInicial();
+
 
     while(corriendo){
         //Detectar algun evento de tecla
@@ -147,7 +160,6 @@ int main(int argc, char* argv[])
         }
 
         //----- Caida gravedad / Bajar rapido -----
-
         pieza_Pos_Siguiente = pieza_Pos_Actual;
         bool bajar= false;
         if(bajar_Rapido != 0){
@@ -171,33 +183,36 @@ int main(int argc, char* argv[])
             printf("coord x: %d coord y: %d\n", pieza_Pos_Actual.X, pieza_Pos_Actual.Y);
             fijar_Pieza(pieza_indice, &pieza_Pos_Actual);
             pieza_Nueva = 1;
-            puntaje = calcular_Puntaje(puntaje,1,0,nivel);
+//            puntaje = calcular_Puntaje(puntaje,1,0,nivel);
         }
 
-        //Eliminar filas completadas
         if (pieza_Nueva == 1){
-            int fila_Eliminar;
-            //Mientras haya alguna fila para eliminar
-            while((fila_Eliminar = verificar_Filas()) != -1){
-                //Eliminar fila completada
-                eliminar_Fila(fila_Eliminar);
-                //Bajar una posicion todos los minos por encima de la fila eliminada
-
-
-
+                int fila_Eliminar;
+                //Mientras haya alguna fila para eliminar
+                while((fila_Eliminar = verificar_Filas()) != -1){
+                    //Eliminar fila completada
+                    eliminar_Fila(fila_Eliminar);
+                    fila++;
+                    //Bajar una posicion todos los minos por encima de la fila eliminada
 
                 //Contador de cuantas filas se eliminaron
+
+                }
             }
-        }
+            puntaje = calcular_Puntaje(puntaje,fila,0,nivel);
+            fila=0;
+
+        //Eliminar filas completadas
+
         //Llenar el backbuffer con un color
         gbt_borrar_backbuffer(AUX);
 
         //Mostrar puntaje
         mostrar_Puntaje(puntaje, VENTANA_ANCHO/10,VENTANA_ALTO/8);
-
+       dibujar_Grilla_Juego();
         //Dibujar la pieza en la pos que le corresponda
         dibujar_Pieza(pieza_indice, &pieza_Pos_Actual,Sc, Sb);
-        dibujar_Grilla_Juego();
+
 
         //Contador de frames em funcion del temporizador
         if (gbt_temporizador_consumir(temporizador)){
