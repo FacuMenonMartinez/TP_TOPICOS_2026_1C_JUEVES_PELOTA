@@ -27,6 +27,17 @@ int main(int argc, char* argv[])
         return -1;
     };
 
+        const char* nombre_del_archivo = argv[1];
+    t_Configuracion config;
+    if (leerConfiguracion(nombre_del_archivo, &config))
+    {
+        ///PENDIENTE RELACIONAR LOS VALORES DEL ARCHIVO CON CADA PARAMETRO
+        printf("--- Valores cargados desde %s ---\n", nombre_del_archivo);
+        printf("Paleta: %d\n", config.paleta);
+        printf("Resolucion: %d\n", config.resolucion);
+        printf("Velocidad: %d\n", config.velocidad);
+    }
+
     //Definir nombre de ventana
     char nombreVentana[128];
     sprintf(nombreVentana, "Ventana %dx%d", VENTANA_ANCHO, VENTANA_ALTO);
@@ -53,7 +64,6 @@ int main(int argc, char* argv[])
     srand(time(NULL));
 
     t_Jugador jug;
-    t_Configuracion config;
     uint8_t corriendo= mostrar_Pantalla_Inicio();
     uint16_t puntaje = 0;
 //    uint8_t crear_jugador= mostrar_Pantalla_Crear_Jugador(&jug);
@@ -66,7 +76,6 @@ int main(int argc, char* argv[])
     uint8_t bajar_Rapido;
     uint8_t nivel_Bajar_Rapido = 10;
     uint8_t fila=0;
-    printf("ESTOY ACA");
 //   if(crear_jugador)
 //        corriendo=1;
 //    else

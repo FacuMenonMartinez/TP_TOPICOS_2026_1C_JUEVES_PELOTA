@@ -24,5 +24,7 @@ void actualizarArchConfig(bool * mat);
 
 void crearArchConfigInicial();
 
+bool leerConfiguracion(const char* nombre_archivo, t_Configuracion* config_leida);
+
 #endif // CONFIGURACION_H_INCLUDED
 

@@ -114,6 +114,27 @@ void actualizarArchConfig(bool * mat)
     fwrite(&config_nueva,sizeof(t_Configuracion),1,arch);
 }
 
+bool leerConfiguracion(const char* nombre_archivo, t_Configuracion* config_leida)
+{
+
+    FILE *arch = fopen(nombre_archivo, "rb");
+    if (arch == NULL) {
+        printf("Error de apertura");
+        return false;
+    }
+
+    size_t leidos = fread(config_leida, sizeof(t_Configuracion), 1, arch);
+    fclose(arch);
+
+    if (leidos != 1) {
+        printf("Error al leer archivo");
+        return false;
+    }
+
+    return true;
+}
+
+
 //void crearArchConfigInicial()
 //{
 //    t_Configuracion config_inicial;
