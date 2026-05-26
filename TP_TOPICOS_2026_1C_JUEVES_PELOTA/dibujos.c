@@ -70,8 +70,14 @@ int verificar_Filas(){
 }
 
 void eliminar_Fila(int fila_Eliminar){
-    for(int x = 0; x< GRILLA_COL; x++){
-        grilla_Juego[fila_Eliminar][x] = 0;
+    for(int y = fila_Eliminar; y > 0; y--){
+        for(uint8_t x = 0; x < GRILLA_COL; x++){
+            grilla_Juego[y][x] = grilla_Juego[y-1][x];
+        }
+    }
+    // limpiar la fila superior
+    for(uint8_t x = 0; x < GRILLA_COL; x++){
+        grilla_Juego[0][x] = 0;
     }
 }
 

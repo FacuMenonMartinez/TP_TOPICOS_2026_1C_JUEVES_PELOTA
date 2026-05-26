@@ -183,6 +183,9 @@ int main(int argc, char* argv[])
                 eliminar_Fila(fila_Eliminar);
                 //Bajar una posicion todos los minos por encima de la fila eliminada
 
+
+
+
                 //Contador de cuantas filas se eliminaron
             }
         }
