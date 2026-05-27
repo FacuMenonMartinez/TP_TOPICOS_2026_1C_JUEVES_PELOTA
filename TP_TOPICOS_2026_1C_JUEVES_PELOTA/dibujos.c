@@ -9,11 +9,12 @@
 #include "movimiento.h"
 #include "caracteres.h"
 
+    uint16_t grilla_Origen_X;
+    uint16_t grilla_Origen_Y;
+
 void calcular_Posicion(uint16_t grilla_X,uint16_t grilla_Y, uint16_t  *coord_X, uint16_t  *coord_Y){
-
-    uint16_t grilla_Origen_X =  (VENTANA_ANCHO/2)-((GRILLA_COL * (MINO_LADO + (MINO_BORDE *2)))/2);
-    uint16_t grilla_Origen_Y  =  20;
-
+    grilla_Origen_X =  (VENTANA_ANCHO/2)-((GRILLA_COL * (MINO_LADO + (MINO_BORDE *2)))/2);
+    grilla_Origen_Y  =  20;
     //Calcular coordenada X
     *coord_X = grilla_Origen_X + (grilla_X * (MINO_LADO + MINO_BORDE));
     //Calcular coordenada Y
@@ -58,12 +59,38 @@ void dibujar_Pieza(e_Piezas pieza, pieza_Pos *posicion, uint8_t color_Centro,uin
     }
 }
 
+//Dibujar pieza fuera de la grilla de juego, recibe coordendas en pixeles
+void dibujar_Pieza_Aux(e_Piezas pieza, e_Piezas_Rotacion posicion, uint16_t coord_X, uint16_t coord_Y){
+        for(uint16_t i = 0; i<PIEZA_LADO; i++){
+            for(uint16_t j = 0; j<PIEZA_LADO; j++){
+                if (piezas[pieza][posicion][j][i] == true){
+                //dibujar mino
+                    for(uint16_t y = 0; y < MINO_LADO; y++){
+                        for(uint16_t x = 0; x < MINO_LADO; x++){
+                            uint8_t color = pieza_Mino[y][x]? 8 : 9;
+                            gbt_dibujar_pixel(coord_X + i*(MINO_LADO + MINO_BORDE) + x,coord_Y + j*(MINO_LADO + MINO_BORDE) + y,color);
+                        }
+                    }
+                }
+            }
+        }
+}
+
+void dibujar_Pieza_Siguiente(e_Piezas pieza){
+    //Dibujar pieza siguiente
+    //dibujar_Pieza_Aux(pieza, e_Pieza_0, grilla_Origen_X + (MINO_LADO+MINO_BORDE)*(GRILLA_COL+5), grilla_Origen_Y+50);
+    dibujar_Pieza_Aux(pieza, e_Pieza_0, grilla_Origen_X+ (MINO_LADO+MINO_BORDE)*(GRILLA_COL+8), grilla_Origen_Y+10);
+    //Dibujar texto para pieza siguiente
+    uint8_t str_Pieza_Sig[15]= {c_P,c_I,c_E,c_Z,c_A,c_ES,c_S,c_I,c_G,c_U,c_I,c_E,c_N,c_T, c_E};
+    dibujar_Palabra_F2(str_Pieza_Sig,15,grilla_Origen_X+ (MINO_LADO+MINO_BORDE)*(GRILLA_COL+1) ,grilla_Origen_Y ,1,9);
+}
+
 void dibujar_Grilla_Juego(){
     for(uint8_t y = 0; y<GRILLA_FIL; y++){
         for(uint8_t x = 0; x<GRILLA_COL; x++){
             if(grilla_Juego[y][x]){
                 //que hago con los colores?
-                dibujar_mino(x, y, 7, 4);
+                dibujar_mino(x, y, 8, 9);
             }
              else{
                 dibujar_fondo(x,y,5);

@@ -3,6 +3,9 @@
 
 #include "piezas.h"
 
+ extern uint16_t grilla_Origen_X;
+ extern uint16_t grilla_Origen_Y;
+
 /*
 Esta funcion recibe un nro entero que corresponde a un indice
 dentro de una matriz de 10x20 que representa la grilla del juego
@@ -31,6 +34,12 @@ void dibujar_Grilla_Juego();
 int verificar_Filas();
 
 void eliminar_Fila(int fila_Eliminar);
+
+//Dibujar pieza fuera de la grilla de juego, recibe coordendas en pixeles
+void dibujar_Pieza_Aux(e_Piezas pieza, e_Piezas_Rotacion posicion, uint16_t coord_X, uint16_t coord_Y);
+
+//Dibujar pieza siguiente y texto
+void dibujar_Pieza_Siguiente(e_Piezas pieza);
 
 //Funcion para dibujar texto
     //Usa la fuente 1

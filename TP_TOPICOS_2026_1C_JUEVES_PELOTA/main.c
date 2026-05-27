@@ -140,9 +140,6 @@ int main(int argc, char* argv[])
         //Cambio de paletas
         paletas_Cambio(GBTK_u, GBTK_i, GBTK_o, &tecla);
 
-        //Determinar cual sera la siguiente pieza
-        pieza_Indice_Siguiente = pieza_Siguiente();
-
         //Dibujar pieza en coordenada de inicio
         if (pieza_Nueva){
             //Dibujar pieza en coordenada de inicio
@@ -263,7 +260,8 @@ int main(int argc, char* argv[])
         dibujar_Grilla_Juego();
         //Dibujar la pieza en la pos que le corresponda
         dibujar_Pieza(pieza_Indice_Actual, &pieza_Pos_Actual,Sc, Sb);
-
+        //Dibujar pieza siguiente y texto
+        dibujar_Pieza_Siguiente(pieza_Indice_Siguiente);
 
         //Contador de frames em funcion del temporizador
         if (gbt_temporizador_consumir(temporizador)){

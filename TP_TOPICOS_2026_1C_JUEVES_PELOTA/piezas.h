@@ -39,12 +39,6 @@ e_Pieza_180,
 e_Pieza_270,
 }e_Piezas_Rotacion;
 
-typedef struct{
-    uint8_t borde;
-    uint8_t centro;
-}t_Pieza_Color;
-
-
 //Declaracion del cuadradito que formara las piezas
 extern const bool pieza_Mino[MINO_LADO][MINO_LADO];
 
