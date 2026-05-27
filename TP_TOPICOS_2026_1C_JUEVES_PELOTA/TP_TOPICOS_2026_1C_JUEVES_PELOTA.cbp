@@ -11,6 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="Configuracion" />
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="lib/GBT_v2026.1C.01/include" />
@@ -36,10 +37,15 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Configuracion" />
 		<Unit filename="caracteres.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="caracteres.h" />
+		<Unit filename="configuracion.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="configuracion.h" />
 		<Unit filename="dibujos.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -63,6 +69,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="pantalla_inicio.h" />
+		<Unit filename="pantalla_pausa.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pantalla_pausa.h" />
 		<Unit filename="piezas.c">
 			<Option compilerVar="CC" />
 		</Unit>

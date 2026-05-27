@@ -2,9 +2,9 @@
 #define MOVIMIENTO_H_INCLUDED
 
 
-#define VENTANA_ANCHO 320
-#define VENTANA_ALTO 200
-#define ESCALA_VENTANA 3
+//#define VENTANA_ANCHO 320
+//#define VENTANA_ALTO 200
+//#define ESCALA_VENTANA 3
 
 
 #define GRILLA_FIL 20
