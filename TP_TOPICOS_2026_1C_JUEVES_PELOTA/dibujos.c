@@ -10,6 +10,10 @@
 #include "caracteres.h"
 
 void calcular_Posicion(uint16_t grilla_X,uint16_t grilla_Y, uint16_t  *coord_X, uint16_t  *coord_Y){
+
+    uint16_t grilla_Origen_X =  (VENTANA_ANCHO/2)-((GRILLA_COL * (MINO_LADO + (MINO_BORDE *2)))/2);
+    uint16_t grilla_Origen_Y  =  20;
+
     //Calcular coordenada X
     *coord_X = grilla_Origen_X + (grilla_X * (MINO_LADO + MINO_BORDE));
     //Calcular coordenada Y
