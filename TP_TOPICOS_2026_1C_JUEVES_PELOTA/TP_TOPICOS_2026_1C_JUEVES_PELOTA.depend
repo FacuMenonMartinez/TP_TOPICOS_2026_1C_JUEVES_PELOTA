@@ -469,7 +469,7 @@
 	<stdlib.h>
 	<stdint.h>
 
-1779788491 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\dibujos.c
+1779853784 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\dibujos.c
 	<stdio.h>
 	<stdlib.h>
 	<stdint.h>
@@ -489,7 +489,7 @@
 	<stdint.h>
 	"GBT/gbt.h"
 
-1779768689 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\movimiento.h
+1779858513 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\movimiento.h
 	"piezas.h"
 
 1779768689 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\jugador.c
@@ -503,7 +503,7 @@
 	"dibujos.h"
 	"movimiento.h"
 
-1779788093 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\main.c
+1779859337 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\main.c
 	<stdio.h>
 	<stdlib.h>
 	<stdint.h>
@@ -534,7 +534,7 @@
 	"movimiento.h"
 	"jugador.h"
 
-1779768689 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\movimiento.c
+1779853791 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\movimiento.c
 	"movimiento.h"
 
 1779768689 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\paletas.c
@@ -555,10 +555,12 @@
 
 1779768689 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\trash.c
 
-1779787493 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\configuracion.c
+1779859338 source:c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\configuracion.c
 	"configuracion.h"
+	"GBT/gbt.h"
+	"paletas.h"
 
-1779787493 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\configuracion.h
+1779859338 c:\users\hp\unlam\2026\new folder\tp_tetis\tp_topicos_2026_1c_jueves_pelota\tp_topicos_2026_1c_jueves_pelota\configuracion.h
 	<stdio.h>
 	<stdbool.h>
 	<stdint.h>

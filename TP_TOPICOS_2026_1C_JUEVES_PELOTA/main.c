@@ -18,24 +18,58 @@
 #define CANT_NIVELES 15
 
 const uint8_t tabla_Niveles[CANT_NIVELES] = {48, 43, 38, 33, 28, 23, 18, 13, 8, 6, 5, 4, 3, 2, 1};
+uint16_t VENTANA_ANCHO = 0 ,VENTANA_ALTO = 0, ESCALA_VENTANA = 0;
 
 int main(int argc, char* argv[])
 {
+
     //Iniciar biblioteca
     if(gbt_iniciar() !=0 ){
         fprintf(stderr, "Error al iniciar biblioteca: %s\n", gbt_obtener_log());
         return -1;
     };
 
-        const char* nombre_del_archivo = argv[1];
+        const char* nombre_archivo = argv[1];
     t_Configuracion config;
-    if (leerConfiguracion(nombre_del_archivo, &config))
+    ///Leo el archivo y seteo los parametros segun la config que tenga
+    if (leerConfiguracion(nombre_archivo, &config))
     {
-        ///PENDIENTE RELACIONAR LOS VALORES DEL ARCHIVO CON CADA PARAMETRO
-        printf("--- Valores cargados desde %s ---\n", nombre_del_archivo);
-        printf("Paleta: %d\n", config.paleta);
-        printf("Resolucion: %d\n", config.resolucion);
-        printf("Velocidad: %d\n", config.velocidad);
+        //Desglose de parametros
+        if(config.paleta)
+        {
+
+        }
+        else
+        {
+
+        }
+
+        if(config.resolucion) //VGA 640x480
+        {
+            VENTANA_ANCHO = 640;
+            VENTANA_ALTO = 480;
+            ESCALA_VENTANA = 2;
+        }
+        else //CGA 320x200
+        {
+            VENTANA_ANCHO = 320;
+            VENTANA_ALTO = 200;
+            ESCALA_VENTANA = 3;
+        }
+
+        if(config.velocidad)
+        {
+
+        }
+        else
+        {
+
+        }
+//        ///PENDIENTE RELACIONAR LOS VALORES DEL ARCHIVO CON CADA PARAMETRO
+//        printf("--- Valores cargados desde %s ---\n", nombre_del_archivo);
+//        printf("Paleta: %d\n", config.paleta);
+//        printf("Resolucion: %d\n", config.resolucion);
+//        printf("Velocidad: %d\n", config.velocidad);
     }
 
     //Definir nombre de ventana
@@ -67,7 +101,7 @@ int main(int argc, char* argv[])
     uint8_t corriendo= mostrar_Pantalla_Inicio();
     uint16_t puntaje = 0;
 //    uint8_t crear_jugador= mostrar_Pantalla_Crear_Jugador(&jug);
-    uint8_t configuracion = mostrar_Pantalla_Configuracion(&config);
+    uint8_t configuracion = mostrar_Pantalla_Configuracion(config.paleta,config.resolucion,config.velocidad);
     uint8_t contador_Frames = 0;
     uint8_t nivel = 0;
     bool pieza_Nueva = 1;

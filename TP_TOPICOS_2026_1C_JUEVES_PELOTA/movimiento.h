@@ -1,9 +1,9 @@
 #ifndef MOVIMIENTO_H_INCLUDED
 #define MOVIMIENTO_H_INCLUDED
 
-#define VENTANA_ANCHO 320
-#define VENTANA_ALTO 200
-#define ESCALA_VENTANA 3
+//#define VENTANA_ANCHO 320
+//#define VENTANA_ALTO 200
+//#define ESCALA_VENTANA 3
 
 #define GRILLA_FIL 20
 #define GRILLA_COL 10
@@ -12,7 +12,11 @@
 
 
 //Origines de la grilla de juego relativos a la resolucion de la pantalla
-extern uint16_t grilla_Origen_X, grilla_Origen_Y;
+//extern uint16_t grilla_Origen_X, grilla_Origen_Y;
+
+extern uint16_t VENTANA_ANCHO;
+extern uint16_t VENTANA_ALTO;
+extern uint16_t ESCALA_VENTANA;
 
 //Matriz de posiciones ocupadas en el juego
 extern bool grilla_Juego[GRILLA_FIL][GRILLA_COL];

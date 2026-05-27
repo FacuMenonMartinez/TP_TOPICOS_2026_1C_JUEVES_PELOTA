@@ -1,4 +1,6 @@
 #include "configuracion.h"
+#include "GBT/gbt.h"
+#include "paletas.h"
 #define FILAS 3
 #define COLUMNAS 2
 
@@ -14,9 +16,9 @@ uint8_t Vel1_mensaje [5] = {c_F, c_A, c_C, c_I, c_L};
 uint8_t Vel2_mensaje [7] = {c_D, c_I, c_F, c_I, c_C, c_I, c_L};
 
 
-uint8_t mostrar_Pantalla_Configuracion(t_Configuracion *config)
+uint8_t mostrar_Pantalla_Configuracion(bool pal, bool res, bool vel)
 {
-    bool mat[3] = {0,0,0};
+    bool mat[3] = {pal,res,vel};
     int fil=0, col=0;
 
     eGBT_Tecla tecla;
@@ -95,7 +97,69 @@ uint8_t mostrar_Pantalla_Configuracion(t_Configuracion *config)
 
     }
     actualizarArchConfig(mat);
+    if (modificarParametrosConfig(mat) == -1)
+        return -1;
     return 1;
+
+}
+
+int modificarParametrosConfig(bool * mat)
+{
+    uint16_t Anchoviejo = VENTANA_ANCHO;
+
+    if(mat[0])// seteo paleta
+    {
+
+    }
+    else
+    {
+
+    }
+    if(mat[1])// seteo resolucion
+    {
+        VENTANA_ANCHO = 640;
+        VENTANA_ALTO = 480;
+        ESCALA_VENTANA = 2;
+    }
+    else
+    {
+        VENTANA_ANCHO = 320;
+        VENTANA_ALTO = 200;
+        ESCALA_VENTANA = 3;
+    }
+    if(mat[2])// seteo velocidad
+    {
+
+    }
+    else
+    {
+
+    }
+
+    if(Anchoviejo!=VENTANA_ANCHO)
+    {
+        gbt_destruir_ventana();
+
+        //Definir nombre de ventana
+        char nombreVentana[128];
+        sprintf(nombreVentana, "Ventana %dx%d", VENTANA_ANCHO, VENTANA_ALTO);
+
+        //Crear ventana
+        if (gbt_crear_ventana(nombreVentana, VENTANA_ANCHO, VENTANA_ALTO, ESCALA_VENTANA) != 0)
+        {
+            fprintf(stderr, "Error al iniciar el modulo de graficos de GBT: %s\n", gbt_obtener_log());
+            return -1;
+        }
+
+        //Aplicar paleta de colores
+        if (gbt_aplicar_paleta(paletas[0], CANT_COLORES, GBT_FORMATO_888) != 0)
+        {
+            fprintf(stderr, "Error al aplicar la nueva paleta de colores: %s\n", gbt_obtener_log());
+            return -1;
+        }
+    }
+
+    return 0;
 
 }
 

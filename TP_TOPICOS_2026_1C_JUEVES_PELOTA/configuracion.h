@@ -18,13 +18,14 @@ typedef struct{
 }t_Configuracion;
 
 
-uint8_t mostrar_Pantalla_Configuracion(t_Configuracion *configuracion);
+uint8_t mostrar_Pantalla_Configuracion(bool , bool ,bool);
 
 void actualizarArchConfig(bool * mat);
 
-void crearArchConfigInicial();
+int modificarParametrosConfig(bool * mat);
 
 bool leerConfiguracion(const char* nombre_archivo, t_Configuracion* config_leida);
 
+void crearArchConfigInicial();
 #endif // CONFIGURACION_H_INCLUDED
 
