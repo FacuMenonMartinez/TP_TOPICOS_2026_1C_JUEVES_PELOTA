@@ -12,6 +12,7 @@
 #include "caracteres.h"
 #include "puntaje.h"
 #include "pantalla_inicio.h"
+#include "pantalla_pausa.h"
 #include "jugador.h"
 #include "configuracion.h"
 
@@ -100,6 +101,7 @@ int main(int argc, char* argv[])
 
 
     uint8_t corriendo= mostrar_Pantalla_Inicio();
+    uint8_t pausa=0;
     uint16_t puntaje = 0;
 //    uint8_t crear_jugador= mostrar_Pantalla_Crear_Jugador(&jug);
     uint8_t configuracion = mostrar_Pantalla_Configuracion(config.paleta,config.resolucion,config.velocidad);
@@ -137,6 +139,10 @@ int main(int argc, char* argv[])
 
             printf("Saliendo del ejemplo\n");
         }
+
+        //Pausar juego
+        if(tecla==GBTK_p)
+            pausa=1;
 
         //Cambio de paletas
         paletas_Cambio(GBTK_u, GBTK_i, GBTK_o, &tecla);
@@ -265,6 +271,14 @@ int main(int argc, char* argv[])
         //Dibujar la pieza en la pos que le corresponda
         dibujar_Pieza(pieza_Indice_Actual, &pieza_Pos_Actual,Sc, Sb);
 
+        //Entrar en la pausa
+        while(pausa==1)
+        {
+            pausa = mostrar_Pantalla_Pausa();
+
+            if(pausa==2)
+                corriendo=0;
+        }
 
         //Contador de frames em funcion del temporizador
         if (gbt_temporizador_consumir(temporizador)){
