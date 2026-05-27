@@ -234,3 +234,36 @@ const pieza_Grilla piezas[CANT_PIEZAS][ROTACIONES] = {
         },
     },
 };
+
+
+//array que contiene la generacion de piezas
+uint8_t generacion_Piezas[CANT_PIEZAS];
+uint8_t indice = 0;
+
+//Inicializar el array que contiene la generacion de las piezas
+void piezas_Inicializar(){
+    uint8_t i = 0;
+    //Inicializar vector con la cantidad de piezas
+    while(i < CANT_PIEZAS){
+        *(generacion_Piezas + i) = i;
+        i++;
+    }
+    //Mezclar para poder ir sacando piezas aleatorias sin repeticion
+    for (uint8_t j = CANT_PIEZAS - 1; j > 0; j--){
+        uint8_t k = rand() % (j + 1);
+        uint8_t temp = generacion_Piezas[j];
+        generacion_Piezas[j] = generacion_Piezas[k];
+        generacion_Piezas[k] = temp;
+    }
+    indice = 0;
+}
+
+uint8_t pieza_Siguiente(){
+    if(indice >= CANT_PIEZAS){
+        piezas_Inicializar();
+    }
+    uint8_t temp_Pieza = generacion_Piezas[indice];
+    indice++;
+    return temp_Pieza;
+    indice++;
+}

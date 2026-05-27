@@ -54,5 +54,14 @@ typedef bool pieza_Grilla[PIEZA_LADO][PIEZA_LADO];
 //Declaracion de piezas
 extern const pieza_Grilla piezas[CANT_PIEZAS][ROTACIONES];
 
+//array que contiene la generacion de piezas
+extern uint8_t piezas_Generadas[CANT_PIEZAS];
+
+//Inicializar el array que contiene la generacion de las piezas aleatorias
+void piezas_Inicializar();
+
+//Devuelve la siguiente pieza a generar
+uint8_t pieza_Siguiente();
+
 
 #endif // PIEZAS_H_INCLUDED
