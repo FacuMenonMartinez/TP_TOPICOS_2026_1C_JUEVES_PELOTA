@@ -18,11 +18,11 @@
 #define CANT_NIVELES 15
 
 const uint8_t tabla_Niveles[CANT_NIVELES] = {48, 43, 38, 33, 28, 23, 18, 13, 8, 6, 5, 4, 3, 2, 1};
-uint16_t VENTANA_ANCHO = 0 ,VENTANA_ALTO = 0, ESCALA_VENTANA = 0;
+uint16_t VENTANA_ANCHO = 0 ,VENTANA_ALTO = 0, ESCALA_VENTANA = 0 ;
 
 int main(int argc, char* argv[])
 {
-
+//    crearArchConfigInicial();
     //Iniciar biblioteca
     if(gbt_iniciar() !=0 ){
         fprintf(stderr, "Error al iniciar biblioteca: %s\n", gbt_obtener_log());
@@ -35,14 +35,15 @@ int main(int argc, char* argv[])
     if (leerConfiguracion(nombre_archivo, &config))
     {
         //Desglose de parametros
-        if(config.paleta)
-        {
-
-        }
-        else
-        {
-
-        }
+    ///Para la paleta mando paleta[config.paleta]
+//        if(config.paleta)
+//        {
+//
+//        }
+//        else
+//        {
+//
+//        }
 
         if(config.resolucion) //VGA 640x480
         {
@@ -66,10 +67,10 @@ int main(int argc, char* argv[])
 
         }
 //        ///PENDIENTE RELACIONAR LOS VALORES DEL ARCHIVO CON CADA PARAMETRO
-//        printf("--- Valores cargados desde %s ---\n", nombre_del_archivo);
-//        printf("Paleta: %d\n", config.paleta);
-//        printf("Resolucion: %d\n", config.resolucion);
-//        printf("Velocidad: %d\n", config.velocidad);
+        printf("--- Valores cargados desde %s ---\n", nombre_archivo);
+        printf("Paleta: %d\n", config.paleta);
+        printf("Resolucion: %d\n", config.resolucion);
+        printf("Velocidad: %d\n", config.velocidad);
     }
 
     //Definir nombre de ventana
@@ -83,7 +84,7 @@ int main(int argc, char* argv[])
     }
 
     //Aplicar paleta de colores
-    if (gbt_aplicar_paleta(paletas[0], CANT_COLORES, GBT_FORMATO_888) != 0) {
+    if (gbt_aplicar_paleta(paletas[config.paleta], CANT_COLORES, GBT_FORMATO_888) != 0) {
         fprintf(stderr, "Error al aplicar la nueva paleta de colores: %s\n", gbt_obtener_log());
         return -1;
     }
