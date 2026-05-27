@@ -145,12 +145,16 @@ int main(int argc, char* argv[])
 
         //Dibujar pieza en coordenada de inicio
         if (pieza_Nueva){
-            pieza_Indice_Actual = rand() % 7; //Generar pieza random / Reemplazar por algun algoritmo mas piola
+            //Dibujar pieza en coordenada de inicio
             pieza_Pos_Actual.X =      GRILLA_COL/2;
             pieza_Pos_Actual.Y =      0;
             pieza_Pos_Actual.Rot =    e_Pieza_0;      //Generar pieza aleatoria
             dibujar_Pieza(pieza_Indice_Actual, &pieza_Pos_Actual,Sc, Sb);
             pieza_Nueva = 0;
+
+            //Determinar cual sera la siguiente pieza
+            pieza_Indice_Siguiente = pieza_Siguiente();
+            printf("Pieza siguiente: %d\n", pieza_Indice_Siguiente);
         }
 
         //modificadores de velocidad
