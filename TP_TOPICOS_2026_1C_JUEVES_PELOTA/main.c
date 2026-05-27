@@ -110,7 +110,8 @@ int main(int argc, char* argv[])
     pieza_Pos pieza_Pos_Actual, pieza_Pos_Siguiente;
     uint8_t bajar_Rapido;
     uint8_t nivel_Bajar_Rapido = 10;
-    uint8_t fila=0;
+    uint8_t filas_Eliminadas=0;
+    uint16_t piezas_Fijadas = 0;
      corriendo=0;
 
    if(configuracion)
@@ -230,27 +231,35 @@ int main(int argc, char* argv[])
             printf("coord x: %d coord y: %d\n", pieza_Pos_Actual.X, pieza_Pos_Actual.Y);
             fijar_Pieza(pieza_Indice_Actual, &pieza_Pos_Actual);
             pieza_Nueva = 1;
-//            puntaje = calcular_Puntaje(puntaje,1,0,nivel);
         }
 
         if (pieza_Nueva == 1){
                 int fila_Eliminar;
+
+                //Contador de piezas fijadas
+                piezas_Fijadas++;
+                printf("Piezas fijadas/caidas: %d\n", piezas_Fijadas);
+
                 //Mientras haya alguna fila para eliminar
                 while((fila_Eliminar = verificar_Filas()) != -1){
+
                     //Eliminar fila completada
                     eliminar_Fila(fila_Eliminar);
-                    fila++;
-                    //Bajar una posicion todos los minos por encima de la fila eliminada
 
-                //Contador de cuantas filas se eliminaron
-
+                    //Contador de filas eliminadas
+                    filas_Eliminadas++;
                 }
+
+                printf("Filas eliminadas: %d\n", filas_Eliminadas);
+
                 //Asignar la nueva pieza a generar
                 pieza_Indice_Actual = pieza_Indice_Siguiente;
             }
-            puntaje = calcular_Puntaje(puntaje,fila,0,nivel);
-            fila=0;
 
+            //Calcular puntaje en base a las filas eliminadas
+            puntaje = calcular_Puntaje(puntaje,filas_Eliminadas,0,nivel);
+            //Reinicializar
+            filas_Eliminadas=0;
 
         //Llenar el backbuffer con un color
         gbt_borrar_backbuffer(AUX);
@@ -278,3 +287,4 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+
