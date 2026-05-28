@@ -114,7 +114,7 @@ int main(int argc, char* argv[])
     uint16_t piezas_Fijadas = 0;
     uint16_t descensos_Rapidos = 0;
     uint16_t contador_Frames_Aux =0;
-
+    bool game_Over = 0;
     corriendo=0;
 
    if(configuracion)
@@ -168,7 +168,7 @@ int main(int argc, char* argv[])
             movimiento_Der(&pieza_Pos_Siguiente);
         }
         //Verificar si la nueva posicion es valida
-        if(posicion_Valida(pieza_Indice_Actual, &pieza_Pos_Siguiente)){
+        if(posicion_Valida(pieza_Indice_Actual, &pieza_Pos_Siguiente) == epos_Valida){
             //Actualizar posicion en la grilla
             pieza_Pos_Actual = pieza_Pos_Siguiente;
         }
@@ -180,7 +180,7 @@ int main(int argc, char* argv[])
             movimiento_Izq(&pieza_Pos_Siguiente);
         }
         //Verificar si la nueva posicion es valida
-        if(posicion_Valida(pieza_Indice_Actual, &pieza_Pos_Siguiente)){
+        if(posicion_Valida(pieza_Indice_Actual, &pieza_Pos_Siguiente)== epos_Valida){
             //Actualizar posicion en la grilla
             pieza_Pos_Actual = pieza_Pos_Siguiente;
         }
@@ -193,7 +193,7 @@ int main(int argc, char* argv[])
             movimiento_Giro_H(&pieza_Pos_Siguiente);
         }
         //Verificar si la nueva posicion es valida
-        if(posicion_Valida(pieza_Indice_Actual, &pieza_Pos_Siguiente)){
+        if(posicion_Valida(pieza_Indice_Actual, &pieza_Pos_Siguiente)== epos_Valida){
             //Actualizar posicion en la grilla
             pieza_Pos_Actual = pieza_Pos_Siguiente;
         }
@@ -205,7 +205,7 @@ int main(int argc, char* argv[])
             movimiento_Giro_AH(&pieza_Pos_Siguiente);
         }
         //Verificar si la nueva posicion es valida
-        if(posicion_Valida(pieza_Indice_Actual, &pieza_Pos_Siguiente)){
+        if(posicion_Valida(pieza_Indice_Actual, &pieza_Pos_Siguiente)== epos_Valida){
             //Actualizar posicion en la grilla
             pieza_Pos_Actual = pieza_Pos_Siguiente;
         }
@@ -227,9 +227,14 @@ int main(int argc, char* argv[])
             bajar = true;
         }
         //Verificar si la pos es valida
-        if(posicion_Valida(pieza_Indice_Actual, &pieza_Pos_Siguiente)){
+        e_retorno_Validacion pos_Valida = posicion_Valida(pieza_Indice_Actual, &pieza_Pos_Siguiente);
+        if(pos_Valida== epos_Valida){
             //Actualizar posicion en la grilla
             pieza_Pos_Actual = pieza_Pos_Siguiente;
+        }
+        else if(pos_Valida== egame_Over){
+            game_Over  = true;
+            printf("Game over\n");
         }
         else if(bajar) //Si tengo que bajar y no puedo >> bloquear la pieza
         {
@@ -242,6 +247,7 @@ int main(int argc, char* argv[])
                 pieza_Nueva = 1;
             }
         }
+
 
         if (pieza_Nueva == 1){
                 int fila_Eliminar;

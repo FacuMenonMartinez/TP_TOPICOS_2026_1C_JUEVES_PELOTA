@@ -5,7 +5,7 @@
 
 bool grilla_Juego[GRILLA_FIL][GRILLA_COL] = {{0}};
 
-bool posicion_Valida(e_Piezas epieza, pieza_Pos *pieza_PosNueva){
+e_retorno_Validacion posicion_Valida(e_Piezas epieza, pieza_Pos *pieza_PosNueva){
     //Coordenadas de la pieza respecto de la grilla!
     uint8_t coord_X = 0, coord_Y = 0;
 
@@ -18,20 +18,24 @@ bool posicion_Valida(e_Piezas epieza, pieza_Pos *pieza_PosNueva){
             if (piezas[epieza][pieza_PosNueva->Rot][y][x]){   //Solo valido las posiciones en las que hay un 1 en el bitmap de la pieza ; piezas es la variable definida en piezas.h
                 //Validar si no puede bajar mas porque llego al final
                 if(coord_Y >= GRILLA_FIL){
-                    return false;
+                    return ecolision;
                 }
                 //Valida que no se vaya de costado
                 if(coord_X >= GRILLA_COL){
-                    return false;
+                    return ecolision;
                 }
                 //Si hay algun uno en la grilla para esta posicion de la pieza significa que se la pone si se mueve
                 if(grilla_Juego[coord_Y][coord_X]){
-                    return false;
+                    //Si la colision fue en la primer fila significa que no puedo dibujar mas >> game over
+                    if(coord_Y == 0){
+                        return egame_Over;
+                    }
+                    return ecolision;
                 }
             }
         }
     }
-    return true;    //Si no fue false significa que es true
+    return epos_Valida;
 }
 
 void movimiento_Der(pieza_Pos *pieza_Pos){

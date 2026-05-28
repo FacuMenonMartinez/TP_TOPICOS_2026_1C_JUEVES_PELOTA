@@ -10,6 +10,11 @@
 
 #include "piezas.h"
 
+typedef enum{
+    ecolision = 0,
+    epos_Valida,
+    egame_Over,
+}e_retorno_Validacion;
 
 //Origines de la grilla de juego relativos a la resolucion de la pantalla
 //extern uint16_t grilla_Origen_X, grilla_Origen_Y;
@@ -28,7 +33,7 @@ extern bool grilla_Juego[GRILLA_FIL][GRILLA_COL];
  * \return true: posicion valida, false: posicion invalida
  */
 
-bool posicion_Valida(e_Piezas epieza, pieza_Pos *pieza_PosNueva);
+e_retorno_Validacion posicion_Valida(e_Piezas epieza, pieza_Pos *pieza_PosNueva);
 
 /** \brief
  * Estas funciones se encargan de actualizar las coordenadas y el indice de giro de la pieza que se le pase por parametro
