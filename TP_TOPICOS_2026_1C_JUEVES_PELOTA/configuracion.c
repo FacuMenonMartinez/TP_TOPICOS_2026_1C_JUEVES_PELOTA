@@ -106,15 +106,14 @@ uint8_t mostrar_Pantalla_Configuracion(bool pal, bool res, bool vel)
 int modificarParametrosConfig(bool * mat)
 {
     uint16_t Anchoviejo = VENTANA_ANCHO;
-    uint8_t paleta = 0;
 //    uint16_t
     if(mat[0])// seteo paleta
     {
-        paleta = 1;
+        PALETA = PALETA_NOCTURNOS;
     }
     else
     {
-        paleta = 0;
+        PALETA = PALETA_VIVOS;
     }
     if(mat[1])// seteo resolucion
     {
@@ -151,14 +150,14 @@ int modificarParametrosConfig(bool * mat)
             fprintf(stderr, "Error al iniciar el modulo de graficos de GBT: %s\n", gbt_obtener_log());
             return -1;
         }
+//        Aplicar paleta de colores
 
-        //Aplicar paleta de colores
-        if (gbt_aplicar_paleta(paletas[paleta], CANT_COLORES, GBT_FORMATO_888) != 0)
-        {
-            fprintf(stderr, "Error al aplicar la nueva paleta de colores: %s\n", gbt_obtener_log());
-            return -1;
-        }
     }
+//    if (gbt_aplicar_paleta(paletas[paleta_Activa], CANT_COLORES, GBT_FORMATO_888) != 0)
+//    {
+//        fprintf(stderr, "Error al aplicar la nueva paleta de colores: %s\n", gbt_obtener_log());
+//        return -1;
+//    }
 
     return 0;
 

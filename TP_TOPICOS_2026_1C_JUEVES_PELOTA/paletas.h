@@ -27,6 +27,7 @@
 //#define Mb 17 //Mino base
 
 extern tGBT_ColorRGB paleta_Vivos[CANT_COLORES], paleta_Nocturnos[CANT_COLORES], paleta_Metalicos[CANT_COLORES];
+extern uint16_t PALETA;
 
 //Lista de paletas
 typedef enum {

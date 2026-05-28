@@ -20,7 +20,7 @@
 #define CANT_NIVELES 15
 
 const uint8_t tabla_Niveles[CANT_NIVELES] = {48, 43, 38, 33, 28, 23, 18, 13, 8, 6, 5, 4, 3, 2, 1};
-uint16_t VENTANA_ANCHO = 0 ,VENTANA_ALTO = 0, ESCALA_VENTANA = 0 ;
+uint16_t VENTANA_ANCHO = 0 ,VENTANA_ALTO = 0, ESCALA_VENTANA = 0, PALETA = 0;
 
 int main(int argc, char* argv[])
 {
@@ -38,14 +38,14 @@ int main(int argc, char* argv[])
     {
         //Desglose de parametros
     ///Para la paleta mando paleta[config.paleta]
-//        if(config.paleta)
-//        {
-//
-//        }
-//        else
-//        {
-//
-//        }
+        if(config.paleta)
+        {
+            PALETA = 1;
+        }
+        else
+        {
+            PALETA = 0;
+        }
 
         if(config.resolucion) //VGA 640x480
         {
@@ -86,7 +86,7 @@ int main(int argc, char* argv[])
     }
 
     //Aplicar paleta de colores
-    if (gbt_aplicar_paleta(paletas[config.paleta], CANT_COLORES, GBT_FORMATO_888) != 0) {
+    if (gbt_aplicar_paleta(paletas[PALETA], CANT_COLORES, GBT_FORMATO_888) != 0) {
         fprintf(stderr, "Error al aplicar la nueva paleta de colores: %s\n", gbt_obtener_log());
         return -1;
     }
@@ -153,6 +153,10 @@ int main(int argc, char* argv[])
 
         //Cambio de paletas
         paletas_Cambio(GBTK_u, GBTK_i, GBTK_o, &tecla);
+        if (gbt_aplicar_paleta(paletas[PALETA], CANT_COLORES, GBT_FORMATO_888) != 0) {
+        fprintf(stderr, "Error al aplicar la nueva paleta de colores: %s\n", gbt_obtener_log());
+        return -1;
+    }
 
         //Determinar cual sera la siguiente pieza
         pieza_Indice_Siguiente = pieza_Siguiente();
