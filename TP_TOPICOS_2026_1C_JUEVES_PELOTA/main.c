@@ -114,7 +114,7 @@ int main(int argc, char* argv[])
     uint16_t piezas_Fijadas = 0;
     uint16_t descensos_Rapidos = 0;
     uint16_t contador_Frames_Aux =0;
-    bool game_Over = 0;
+    bool        game_Over = false;
     corriendo=0;
 
    if(configuracion)
