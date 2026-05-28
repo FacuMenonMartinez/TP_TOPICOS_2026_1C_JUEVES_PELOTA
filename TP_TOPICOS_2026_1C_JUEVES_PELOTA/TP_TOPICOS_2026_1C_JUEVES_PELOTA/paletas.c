@@ -1,0 +1,85 @@
+#include "paletas.h"
+#include <stdio.h>
+tGBT_ColorRGB paleta_Vivos[CANT_COLORES] = {
+    //Colores Vivos
+    {0x00, 0xF0, 0xF0}, // 0:  Cyan
+    {0x50, 0xFF, 0xFF}, // 1:  Cyan claro
+    {0x00, 0x50, 0xDC}, // 2:  Azul
+    {0x50, 0x96, 0xFF}, // 3:  Azul claro
+    {0xFF, 0x7F, 0x00}, // 4:  Naranja
+    {0xFF, 0xBE, 0x50}, // 5:  Naranja claro
+    {0xF0, 0xDC, 0x00}, // 6:  Amarillo
+    {0xFF, 0xF5, 0x5A}, // 7:  Amarillo claro
+    {0x00, 0xD2, 0x00}, // 8:  Verde
+    {0x50, 0xFF, 0x64}, // 9:  Verde claro
+    {0xA0, 0x00, 0xF0}, // 10: Violeta
+    {0xD2, 0x50, 0xFF}, // 11: Violeta claro
+    {0xE6, 0x14, 0x14}, // 12: Rojo
+    {0xFF, 0x64, 0x5A}, // 13: Rojo claro
+    {0x0A, 0x0A, 0x19}, // 14: Fondo
+    {0xFF, 0xFF, 0xFF}, // 15  TRANSPARENTE
+};
+
+tGBT_ColorRGB paleta_Nocturnos[CANT_COLORES] = {
+    //Colores nocturnos
+    {0x00, 0x5A, 0x6E}, // 0:  Cyan oscuro
+    {0x00, 0x8C, 0xA0}, // 1:  Cyan oscuro claro
+    {0x14, 0x32, 0x82}, // 2:  Azul noche
+    {0x32, 0x5A, 0xB4}, // 3:  Azul noche claro
+    {0xA0, 0x46, 0x00}, // 4:  Naranja
+    {0xD2, 0x6E, 0x1E}, // 5:  Naranja claro
+    {0xA0, 0x8C, 0x00}, // 6:  Oro apagado
+    {0xD2, 0xB9, 0x14}, // 7:  Oro apagado claro
+    {0x14, 0x6E, 0x28}, // 8:  Verde bosque
+    {0x28, 0xA0, 0x46}, // 9:  Verde bosque claro
+    {0x50, 0x0A, 0x82}, // 10: Purpura
+    {0x78, 0x28, 0xB4}, // 11: Purpura claro
+    {0x8C, 0x0F, 0x19}, // 12: Rojo oscuro
+    {0xBE, 0x32, 0x3C}, // 13: Rojo oscuro claro
+    {0x05, 0x08, 0x14}, // 14: Fondo
+    {0xFF, 0xFF, 0xFF}, // 15: TRANSPARENTE
+};
+
+tGBT_ColorRGB paleta_Metalicos[CANT_COLORES] = {
+    //Colores Metalicos
+    {0x00, 0xB4, 0xC3}, // 0:   Cyan metal
+    {0xA0, 0xF0, 0xF5}, // 1:   Cyan metal claro
+    {0x00, 0x50, 0xA5}, // 2:   Azul acero
+    {0x78, 0xB9, 0xFF}, // 3:   Azul acero claro
+    {0xC3, 0x6E, 0x00}, // 4:   Bronce
+    {0xFF, 0xC3, 0x5A}, // 5:   Bronce claro
+    {0xC3, 0xAF, 0x00}, // 6:   Oro metal
+    {0xFF, 0xFA, 0x82}, // 7:   Oro metal claro
+    {0x32, 0xA0, 0x23}, // 8:   Verde jade
+    {0x8C, 0xFA, 0x78}, // 9:   Verde jade claro
+    {0x9B, 0x00, 0x82}, // 10:  Magenta met
+    {0xF0, 0x64, 0xD7}, // 11:  Magenta met claro
+    {0xAF, 0x0A, 0x0A}, // 12:  Rojo acero
+    {0xFF, 0x6E, 0x5F}, // 13:  Rojo acero claro
+    {0x0F, 0x0F, 0x14}, // 14:  Fondo
+    {0xFF, 0xFF, 0xFF}, // 15:  Transparente
+};
+
+
+tGBT_ColorRGB *paletas[CANT_PALETAS] = {
+    paleta_Vivos,
+    paleta_Nocturnos,
+    paleta_Metalicos
+};
+
+uint8_t paleta_Activa;
+
+void paletas_Cambio(eGBT_Tecla tecla_Pal_1, eGBT_Tecla tecla_Pal_2, eGBT_Tecla tecla_Pal_3, eGBT_Tecla *tecla){
+
+        if(*tecla == tecla_Pal_1){
+            paleta_Activa = PALETA_VIVOS;
+        }
+        else if(*tecla == tecla_Pal_2){
+            paleta_Activa = PALETA_NOCTURNOS;
+        }
+        else if(*tecla == tecla_Pal_3){
+            paleta_Activa = PALETA_METALICOS;
+        }
+        //Aplicar paleta
+        if (gbt_aplicar_paleta(paletas[paleta_Activa], CANT_COLORES, GBT_FORMATO_888));
+}

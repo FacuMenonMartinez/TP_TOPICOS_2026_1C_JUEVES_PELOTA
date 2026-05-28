@@ -50,10 +50,17 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="dibujos.h" />
+		<Unit filename="header.h" />
 		<Unit filename="jugador.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="jugador.h" />
+		<Unit filename="lib/GBT_v2026.1C.01/include/GBT/gbt.h" />
+		<Unit filename="lib/GBT_v2026.1C.01/include/GBT/gbt_entrada.h" />
+		<Unit filename="lib/GBT_v2026.1C.01/include/GBT/gbt_graficos.h" />
+		<Unit filename="lib/GBT_v2026.1C.01/include/GBT/gbt_logger.h" />
+		<Unit filename="lib/GBT_v2026.1C.01/include/GBT/gbt_temporizador.h" />
+		<Unit filename="lib/GBT_v2026.1C.01/include/GBT/gbt_vector.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
