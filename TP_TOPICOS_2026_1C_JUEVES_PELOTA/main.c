@@ -13,6 +13,7 @@
 #include "puntaje.h"
 #include "pantalla_inicio.h"
 #include "pantalla_pausa.h"
+#include "pantalla_game_over.h"
 #include "jugador.h"
 #include "configuracion.h"
 
@@ -99,11 +100,11 @@ int main(int argc, char* argv[])
 
     srand(time(NULL));
 
-
+    t_Jugador jug, ranking[CANTIDAD_JUGADORES];
     uint8_t corriendo= mostrar_Pantalla_Inicio();
     uint8_t pausa=0;
     uint16_t puntaje = 0;
-//    uint8_t crear_jugador= mostrar_Pantalla_Crear_Jugador(&jug);
+    uint8_t crear_jugador= mostrar_Pantalla_Crear_Jugador(&jug);
     uint8_t configuracion = mostrar_Pantalla_Configuracion(config.paleta,config.resolucion,config.velocidad);
     uint8_t contador_Frames = 0;
     uint8_t nivel = 0;
@@ -115,6 +116,12 @@ int main(int argc, char* argv[])
     uint8_t nivel_Bajar_Rapido = 10;
     uint8_t fila=0;
      corriendo=0;
+
+
+    if(crear_jugador)
+        corriendo=1;
+    else
+        corriendo=0;
 
    if(configuracion)
         corriendo=1;
@@ -266,7 +273,7 @@ int main(int argc, char* argv[])
         gbt_borrar_backbuffer(AUX);
 
         //Mostrar puntaje
-        mostrar_Puntaje(puntaje, VENTANA_ANCHO/10,VENTANA_ALTO/8);
+        mostrar_Puntaje_Main(puntaje, VENTANA_ANCHO/10,VENTANA_ALTO/8,2);
         dibujar_Grilla_Juego();
         //Dibujar la pieza en la pos que le corresponda
         dibujar_Pieza(pieza_Indice_Actual, &pieza_Pos_Actual,Sc, Sb);
@@ -289,6 +296,16 @@ int main(int argc, char* argv[])
 
         gbt_esperar(10);
     }
+
+    jug.puntaje=puntaje;
+    crear_Vector_Jugador(ranking, &jug);
+    crear_Archivo_Jugador(ranking);
+
+    for(uint8_t i =0;i<CANTIDAD_JUGADORES;i++){
+        printf("JUGADOR: %d %d %d  PUNTAJE: %d\n",ranking[i].jugador_Nombre[0],ranking[i].jugador_Nombre[1],ranking[i].jugador_Nombre[2], ranking[i].puntaje);
+    }
+
+    corriendo = mostrar_Pantalla_Game_Over(ranking);
     gbt_temporizador_destruir(temporizador);
     gbt_destruir_ventana();
     gbt_cerrar();

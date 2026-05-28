@@ -65,6 +65,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="paletas.h" />
+		<Unit filename="pantalla_game_over.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pantalla_game_over.h" />
 		<Unit filename="pantalla_inicio.c">
 			<Option compilerVar="CC" />
 		</Unit>
