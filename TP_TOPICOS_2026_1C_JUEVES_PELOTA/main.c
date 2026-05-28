@@ -112,7 +112,10 @@ int main(int argc, char* argv[])
     uint8_t nivel_Bajar_Rapido = 10;
     uint8_t filas_Eliminadas=0;
     uint16_t piezas_Fijadas = 0;
-     corriendo=0;
+    uint16_t descensos_Rapidos = 0;
+    uint16_t contador_Frames_Aux =0;
+
+    corriendo=0;
 
    if(configuracion)
         corriendo=1;
@@ -214,6 +217,8 @@ int main(int argc, char* argv[])
             if(contador_Frames >= tabla_Niveles[nivel_Bajar_Rapido]){
                 contador_Frames = 0;
                 movimiento_Grav(&pieza_Pos_Siguiente);
+                //Contador de descensos rapidos
+                descensos_Rapidos++;            //Reinicializar luego de usar
                 bajar = true;
             }
         }else if(contador_Frames >= tabla_Niveles[nivel]) {
@@ -229,8 +234,13 @@ int main(int argc, char* argv[])
         else if(bajar) //Si tengo que bajar y no puedo >> bloquear la pieza
         {
             printf("coord x: %d coord y: %d\n", pieza_Pos_Actual.X, pieza_Pos_Actual.Y);
-            fijar_Pieza(pieza_Indice_Actual, &pieza_Pos_Actual);
-            pieza_Nueva = 1;
+
+            //Temporizacion para fijar la pieza
+            if(contador_Frames_Aux >= (tabla_Niveles[nivel] /2 )){
+                contador_Frames_Aux = 0;
+                fijar_Pieza(pieza_Indice_Actual, &pieza_Pos_Actual);
+                pieza_Nueva = 1;
+            }
         }
 
         if (pieza_Nueva == 1){
@@ -254,6 +264,9 @@ int main(int argc, char* argv[])
 
                 //Asignar la nueva pieza a generar
                 pieza_Indice_Actual = pieza_Indice_Siguiente;
+
+                //Descensos rapidos
+                printf("Cant. Descensos rapidos: %d\n", descensos_Rapidos);
             }
 
             //Calcular puntaje en base a las filas eliminadas
@@ -275,6 +288,7 @@ int main(int argc, char* argv[])
         //Contador de frames em funcion del temporizador
         if (gbt_temporizador_consumir(temporizador)){
             contador_Frames++;
+            contador_Frames_Aux++;
             //Volcar pixeles dibujados en el backbuffer a la ventana
             gbt_volcar_backbuffer();
         }
